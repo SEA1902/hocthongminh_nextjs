@@ -1,0 +1,95 @@
+.profile_page {
+  padding: 50px 0;
+  min-height: 650px;
+}
+
+.profile_page_title {
+  color: #29313a;
+  font-size: 30px;
+  font-weight: 700;
+  text-align: center;
+  padding-bottom: 30px;
+}
+.profile_page_box {
+  padding: 40px;
+  background-color: #fff;
+  border-radius: 15px;
+}
+.profile_page_box_avatar {
+  display: flex;
+  justify-content: center;
+
+  .upload_button {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    bottom: 3px;
+    right: 3px;
+    border-radius: 50%;
+    background-color: #e4e6eb;
+    cursor: pointer;
+  }
+}
+.profile_page_box_avatar .profile_image {
+  max-width: 150px;
+  overflow: hidden;
+  width: 150px;
+  height: 150px;
+  background-color: var(--secondaryColor);
+  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    width: 100%;
+    height: 100%;
+  }
+}
+.profile_page_account {
+  text-align: center;
+  margin: 20px;
+  font-weight: 500;
+  font-size: 18px;
+  word-break: break-all;
+}
+.profile_page_box_item {
+  margin-bottom: 16px;
+}
+.profile_page_box_item .input_item {
+  padding: 12px 8px;
+  border-radius: 10px;
+  border: 1px solid #dae0ea;
+  color: var(--textColor);
+  font-weight: 500;
+}
+.button_change_password {
+  button {
+    color: var(--textColor);
+    background-color: rgb(241, 244, 248);
+    border-radius: 10px;
+    border: 1px solid rgb(213, 221, 231);
+
+    &:hover {
+      transform: translateY(-2px);
+      transition: 0.5s;
+    }
+  }
+}
+.profile_page_box_button {
+  text-align: right;
+}
+.profile_page_box_button button {
+  background-color: #009c93;
+  padding: 8px 20px;
+  border-radius: 100px;
+  color: #fff;
+
+  &:hover {
+    background-color: #009c93;
+    transform: translateY(-4px);
+  }
+}

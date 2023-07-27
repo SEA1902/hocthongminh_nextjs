@@ -1,0 +1,142 @@
+.footer {
+  padding: 50px 0;
+  background-color: #d2e6e9;
+}
+
+.footer_container {
+  margin-left: auto;
+  box-sizing: border-box;
+  margin-right: auto;
+  padding: 0px 16px;
+  width: 992px;
+}
+
+@media (min-width: 992px) {
+  .footer_container {
+    max-width: 992px;
+  }
+}
+
+@media (min-width: 576px) {
+  .footer_container {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
+
+.main_footer {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: -16px;
+  width: calc(100% + 16px);
+  margin-left: -16px;
+}
+.footer_contact {
+  padding-left: 16px;
+  padding-top: 16px;
+  box-sizing: border-box;
+}
+
+.center_footer {
+  display: flex;
+  align-items: center;
+  padding-left: 16px;
+  padding-top: 16px;
+  box-sizing: border-box;
+}
+
+.connect_with_htm {
+  padding-left: 16px;
+  padding-top: 86px;
+  font-weight: 600;
+  box-sizing: border-box;
+}
+
+.item_contact {
+  margin-bottom: 15px;
+}
+.item_contact .logo img {
+  width: 200px;
+  height: 65px;
+}
+.center_list_item {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: -16px;
+  width: calc(100% + 16px);
+  margin-left: -16px;
+}
+.center_footer_item {
+  padding-left: 16px;
+  padding-top: 16px;
+}
+.list_contact {
+  min-height: 50px;
+
+  a {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+  }
+}
+
+.title_footer_center {
+  text-decoration: underline;
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+.title_footer_connect {
+  padding-bottom: 30px;
+}
+.icon_contact {
+  padding-bottom: 16px;
+}
+.icon_contact a img {
+  width: 33px;
+  height: 30px;
+}
+.title_footer_connect a img {
+  width: 150px;
+  height: 30px;
+}
+.grid_2 {
+  flex-basis: 16.666667%;
+  flex-grow: 0;
+  max-width: 16.666667%;
+  box-sizing: border-box;
+}
+.grid_3 {
+  flex-basis: 25%;
+  flex-grow: 0;
+  max-width: 25%;
+  box-sizing: border-box;
+}
+.grid_4 {
+  flex-basis: 33.333333%;
+  flex-grow: 0;
+  max-width: 33.333333%;
+  box-sizing: border-box;
+}
+.grid_5 {
+  flex-basis: 41.666667%;
+  flex-grow: 0;
+  max-width: 41.666667%;
+  box-sizing: border-box;
+}
+.grid_6 {
+  flex-basis: 50%;
+  flex-grow: 0;
+  max-width: 50%;
+  box-sizing: border-box;
+}
+@media (max-width: 576px) {
+  .main_footer {
+    display: block;
+  }
+  .center_footer_item {
+    flex-basis: 40%;
+    max-width: 50%;
+  }
+}

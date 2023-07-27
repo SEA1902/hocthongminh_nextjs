@@ -1,0 +1,123 @@
+.wp_category_view {
+  padding-bottom: 20px;
+  padding-top: 20px;
+}
+.category_main {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+}
+.cat_title {
+  margin: unset;
+  padding-bottom: 10px;
+  color: var(--primaryColor);
+  font-size: 24px;
+}
+.cat_posts_list {
+  .post_item {
+    overflow: hidden;
+    .post_thumb {
+      transition: transform 0.2s linear;
+      .wp_post_thumb {
+        position: relative;
+        padding-top: 52.5%;
+        overflow: hidden;
+
+        img {
+          vertical-align: middle;
+          position: absolute;
+          max-width: 100%;
+          height: auto;
+          top: 50%;
+          transform: translateY(-50%);
+          object-fit: fill;
+          object-position: center center;
+        }
+      }
+    }
+    .post_title {
+      overflow: hidden !important;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+
+      @media (max-width: 1444px) {
+        font-size: 18px;
+      }
+    }
+    .post_excerpt {
+      p {
+        height: 148px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 6;
+        text-align: justify;
+        @media (max-width: 1444px) {
+          height: 100px;
+          font-size: 13px;
+        }
+      }
+    }
+
+    &:hover {
+      .post_thumb {
+        transform: scale(1.1);
+      }
+    }
+  }
+}
+.cat_pagination {
+  margin-top: 10px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.post_content_main {
+  display: flex;
+}
+.post_content_main_view {
+  flex: 1;
+  margin-top: 14px;
+  text-align: justify;
+  word-break: break-word;
+  .post_title {
+    margin: unset;
+  }
+  .post_content_wrapper {
+    padding: 10px 20px;
+    border-radius: 10px;
+    background-color: #fff;
+    margin: 20px 0;
+    // .post_content {
+    // }
+  }
+}
+.post_content_main_left {
+  text-align: justify;
+  width: 280px;
+  position: relative;
+  margin-right: 24px;
+  @media (max-width: 1444px) {
+    width: 220px;
+    font-size: 14px;
+    margin-right: 16px;
+  }
+}
+.post_content_main_right {
+  margin-top: 20px;
+  width: 280px;
+  position: relative;
+  margin-left: 24px;
+  text-align: justify;
+
+  @media (max-width: 1444px) {
+    width: 220px;
+    font-size: 14px;
+    margin-left: 16px;
+  }
+}

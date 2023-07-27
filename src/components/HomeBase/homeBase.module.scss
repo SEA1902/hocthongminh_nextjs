@@ -1,0 +1,54 @@
+.home_base {
+  text-align: center;
+  background: #fff url(../../asset/brick-wall.png) no-repeat 50%;
+  background-size: cover;
+  padding: 40px 0;
+}
+
+.home_base_title {
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.home_base_body {
+  display: flex;
+  justify-content: center;
+  padding: 60px 0;
+
+  .middle {
+    border-right: 3px solid #e0e0e0;
+    border-left: 3px solid #e0e0e0;
+  }
+}
+.home_base_item {
+  padding: 0 66px;
+  .text {
+    font-weight: 600;
+    font-size: 20px;
+  }
+  .number {
+    font-size: 64px;
+    font-weight: 700;
+    min-width: 205px;
+  }
+  &:hover .text {
+    color: var(--primaryColor);
+  }
+}
+
+@media (max-width: 576px) {
+  .home_base_item {
+    padding: 0 10px;
+    .number {
+      min-width: unset;
+    }
+  }
+}
+@media (max-width: 768px) {
+  .home_base_body .home_base_item .text {
+    font-size: 14px;
+  }
+  .home_base_body .home_base_item .number {
+    font-size: 30px;
+  }
+}
