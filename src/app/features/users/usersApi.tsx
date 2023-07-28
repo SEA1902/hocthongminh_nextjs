@@ -1,7 +1,8 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
+import CryptoJS from "crypto-js";
+import Cookies from "js-cookie";
 import { client } from "@/api/client";
 import { UserInfor } from "@/types";
-import CryptoJS from "crypto-js";
 
 interface loginForm {
   username: string;
@@ -23,6 +24,7 @@ interface changePasswordForm {
   currentPassword: string;
   newPassword: string;
 }
+const secretKey = "hocthongminh";
 
 export const getUserFromToken = createAsyncThunk(
   "users/getUserFromToken",
@@ -33,6 +35,7 @@ export const getUserFromToken = createAsyncThunk(
         token: token,
       }
     );
+
     return response.data;
   }
 );
@@ -40,24 +43,35 @@ export const getUserFromToken = createAsyncThunk(
 export const fetchLogin = createAsyncThunk(
   "users/fetchLogin",
   async (loginData: loginForm) => {
-    const hashedPassword = CryptoJS.SHA256(
-      loginData.password + loginData.username
+    const hashedPassword = CryptoJS.AES.encrypt(
+      loginData.password + loginData.username,
+      secretKey
     ).toString();
 
     const response = await client.post("http://localhost:3001/users/login", {
       username: loginData.username,
-      // password: loginData.password,
       password: hashedPassword,
     });
+    console.log(1);
+
+    const token = response.headers.get("Set-Cookie");
+
+    // Print the value of the "token" cookie
+    console.log(response.headers, token);
+    // Cookies.set("token", response.headers,{ httpOnly: true, maxAge: 86400 });
     return response.data;
   }
 );
-
+export const fetchLogout = createAsyncThunk("users/fetchLogout", async () => {
+  const response = await client.post("http://localhost:3001/users/logout", {});
+  return response.data;
+});
 export const fetchRegister = createAsyncThunk(
   "users/fetchRegister",
   async (registerData: registerForm) => {
-    const hashedPassword = CryptoJS.SHA256(
-      registerData.password + registerData.username
+    const hashedPassword = CryptoJS.AES.encrypt(
+      registerData.password + registerData.username,
+      secretKey
     ).toString();
     registerData = {
       ...registerData,
@@ -86,11 +100,13 @@ export const changePassword = createAsyncThunk(
   "users/changePassword",
   async (changePasswordData: changePasswordForm) => {
     try {
-      const hashedCurrentPassword = CryptoJS.SHA256(
-        changePasswordData.currentPassword + changePasswordData.username
+      const hashedCurrentPassword = CryptoJS.AES.encrypt(
+        changePasswordData.currentPassword + changePasswordData.username,
+        secretKey
       ).toString();
-      const hashedNewPassword = CryptoJS.SHA256(
-        changePasswordData.newPassword + changePasswordData.username
+      const hashedNewPassword = CryptoJS.AES.encrypt(
+        changePasswordData.newPassword + changePasswordData.username,
+        secretKey
       ).toString();
 
       changePasswordData = {

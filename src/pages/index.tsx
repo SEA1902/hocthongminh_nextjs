@@ -6,7 +6,8 @@ import HomeFeedback from "@/components/HomeFeedback";
 import HomeUtils from "@/components/HomeUtils";
 import KnowledgeView from "@/components/KnowledgeView";
 import styles from "./home.module.scss";
-function Home() {
+
+const Home = () => {
   return (
     <div className={styles.main}>
       <div className={styles.banner_pages}>
@@ -28,6 +29,6 @@ function Home() {
       <KnowledgeView />
     </div>
   );
-}
+};
 
 export default Home;

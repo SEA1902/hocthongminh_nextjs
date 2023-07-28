@@ -1,6 +1,6 @@
+import Link from "next/link";
 import { ExpandMore } from "@mui/icons-material";
 import styles from "./navbar.module.scss";
-import Link from "next/link";
 
 type Props = {
   display: string;

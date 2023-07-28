@@ -4,6 +4,7 @@ import {
   changeAvatar,
   changePassword,
   fetchLogin,
+  fetchLogout,
   fetchRegister,
   getUserFromToken,
   updateUser,
@@ -23,26 +24,25 @@ const initialUserState: UserState = {
 export const usersSlice = createSlice({
   name: "users",
   initialState: initialUserState,
-  reducers: {
-    logout: (state) => {
-      localStorage.removeItem("token");
-      state = { loginStatus: "idle" };
-      return state;
-    },
-  },
+  reducers: {},
   extraReducers(builder) {
     builder
       .addCase(fetchLogin.pending, (state, action) => {
         state.loginStatus = "loading";
       })
       .addCase(fetchLogin.fulfilled, (state, action) => {
-        state.loginStatus = "succeeded";
-        state.userInfor = action.payload;
-        state.registerStatus = "idle";
-        localStorage.setItem("token", action.payload.token);
+        state = {
+          loginStatus: "succeeded",
+          userInfor: action.payload,
+        };
+        return state;
       })
       .addCase(fetchLogin.rejected, (state, action) => {
         state.loginStatus = "failed";
+      })
+      .addCase(fetchLogout.fulfilled, (state, action) => {
+        state = { loginStatus: "idle" };
+        return state;
       })
       .addCase(fetchRegister.pending, (state, action) => {
         state.registerStatus = "loading";
@@ -82,7 +82,5 @@ export const usersSlice = createSlice({
       });
   },
 });
-
-export const { logout } = usersSlice.actions;
 
 export default usersSlice.reducer;

@@ -1,4 +1,5 @@
-// import "./login.scss";
+import { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
 import CloseIcon from "@mui/icons-material/Close";
 import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
@@ -14,8 +15,6 @@ import {
   Alert,
   Snackbar,
 } from "@mui/material";
-import { useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
 import { useAppDispatch, useAppSelector } from "@/app/hooks";
 import { fetchLogin } from "@/app/features/users/usersApi";
 import { RootState } from "@/app/store";
@@ -30,19 +29,26 @@ interface FormLogin {
 }
 
 function Login({ openLogin, setOpenLogin }: LoginProps) {
-  const [openAlert, setOpenAlert] = useState(false);
-
   const dispatch = useAppDispatch();
   const loginStatus = useAppSelector(
     (state: RootState) => state.users.loginStatus
   );
 
+  const [openAlert, setOpenAlert] = useState(false);
   const {
     register,
     formState: { errors },
     handleSubmit,
     reset,
   } = useForm<FormLogin>();
+
+  useEffect(() => {
+    if (loginStatus === "failed") {
+      setOpenAlert(true);
+    } else if (loginStatus === "succeeded") {
+      handleCloseModal();
+    }
+  }, [loginStatus, setOpenLogin]);
 
   const handleCloseModal = () => {
     reset();
@@ -54,14 +60,6 @@ function Login({ openLogin, setOpenLogin }: LoginProps) {
       fetchLogin({ username: data.username, password: data.password })
     );
   };
-
-  useEffect(() => {
-    if (loginStatus === "failed") {
-      setOpenAlert(true);
-    } else if (loginStatus === "succeeded") {
-      handleCloseModal();
-    }
-  }, [loginStatus, setOpenLogin]);
 
   return (
     <Modal

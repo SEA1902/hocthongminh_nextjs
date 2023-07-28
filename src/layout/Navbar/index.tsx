@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
-import styles from "./navbar.module.scss";
 import { AppBar, Box, Drawer, IconButton, Typography } from "@mui/material";
 import MainMenu from "./MainMenu";
 import DrawerMobile from "./DrawerMobile";
 import RightNavHeader from "../Header/RightNavHeader";
+import styles from "./navbar.module.scss";
 
 interface Props {
   windows?: () => Window;

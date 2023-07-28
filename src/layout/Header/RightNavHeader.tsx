@@ -1,29 +1,29 @@
 import { useState } from "react";
+import Link from "next/link";
 import { Button, Paper, Popover, Typography } from "@mui/material";
 import PersonIcon from "@mui/icons-material/Person";
 import SchoolIcon from "@mui/icons-material/School";
 import LogoutIcon from "@mui/icons-material/Logout";
-import styles from "./header.module.scss";
-import Login from "@/components/Login";
+
 import { useAppDispatch, useAppSelector } from "@/app/hooks";
 import { RootState } from "@/app/store";
 
+import Login from "@/components/Login";
 import Register from "@/components/Register";
-import { logout } from "@/app/features/users/usersSlice";
-import Link from "next/link";
+import styles from "./header.module.scss";
+import { fetchLogout } from "@/app/features/users/usersApi";
 
 function RightNavHeader() {
-  const [openLogin, setOpenLogin] = useState(false);
-  const [openRegister, setOpenRegister] = useState(false);
-  const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
-
   const dispatch = useAppDispatch();
 
   const loginStatus = useAppSelector(
     (state: RootState) => state.users.loginStatus
   );
-
   const userInfor = useAppSelector((state: RootState) => state.users.userInfor);
+
+  const [openLogin, setOpenLogin] = useState(false);
+  const [openRegister, setOpenRegister] = useState(false);
+  const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
 
   const handlePopoverOpen = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
@@ -31,12 +31,14 @@ function RightNavHeader() {
   const handlePopoverClose = () => {
     setAnchorEl(null);
   };
+
+  const handleLogout = () => {
+    dispatch(fetchLogout());
+  };
+
   const open = Boolean(anchorEl);
   const id = open ? "simple-popover" : undefined;
 
-  const handleLogout = () => {
-    dispatch(logout());
-  };
   return (
     <div className={styles.right_nav_header}>
       {loginStatus === "succeeded" ? (

@@ -1,4 +1,5 @@
-// import "./changePassword.scss";
+import { useForm } from "react-hook-form";
+import { useEffect, useState } from "react";
 import {
   Alert,
   Button,
@@ -11,8 +12,6 @@ import {
   Typography,
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
-import { useForm } from "react-hook-form";
-import { useEffect, useState } from "react";
 import { LockOutlined } from "@mui/icons-material";
 import { useAppDispatch, useAppSelector } from "@/app/hooks";
 import { changePassword } from "@/app/features/users/usersApi";
@@ -28,17 +27,17 @@ interface FormChangePassword {
   confirmPassword?: string;
 }
 
-function ChangePassword({
+const ChangePassword = ({
   openChangePassword,
   setOpenChangePassword,
-}: ChangePasswordProps) {
+}: ChangePasswordProps) => {
+  const dispatch = useAppDispatch();
   const { userInfor, changePasswordStatus } = useAppSelector(
     (state: RootState) => ({
       userInfor: state.users.userInfor,
       changePasswordStatus: state.users.changePasswordStatus,
     })
   );
-  const dispatch = useAppDispatch();
   const [openAlert, setOpenAlert] = useState(false);
 
   const {
@@ -48,6 +47,15 @@ function ChangePassword({
     getValues,
     reset,
   } = useForm();
+
+  useEffect(() => {
+    if (
+      changePasswordStatus === "failed" ||
+      changePasswordStatus === "succeeded"
+    ) {
+      setOpenAlert(true);
+    }
+  }, [changePasswordStatus]);
 
   const onSubmitChangePassword = async (data: FormChangePassword) => {
     let changePasswordData = {
@@ -60,14 +68,6 @@ function ChangePassword({
     reset();
   };
 
-  useEffect(() => {
-    if (
-      changePasswordStatus === "failed" ||
-      changePasswordStatus === "succeeded"
-    ) {
-      setOpenAlert(true);
-    }
-  }, [changePasswordStatus]);
   return (
     <Modal
       open={openChangePassword}
@@ -240,6 +240,6 @@ function ChangePassword({
       </Paper>
     </Modal>
   );
-}
+};
 
 export default ChangePassword;

@@ -1,7 +1,7 @@
-import styles from "./blockCategoryItem.module.scss";
+import { Button } from "@mui/material";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import Animate from "../Animate";
-import { Button } from "@mui/material";
+import styles from "./blockCategoryItem.module.scss";
 
 function BlockCategoryItem({
   itemImage,
@@ -14,7 +14,7 @@ function BlockCategoryItem({
 }) {
   return (
     <div className={styles.block_category_component}>
-      <Animate translate={false} keep={true}>
+      <Animate data_aos="zoom-in">
         <a href="/" className={styles.item_link}>
           <div className={styles.course_item}>
             <div className={styles.course_item_image}>

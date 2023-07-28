@@ -1,12 +1,12 @@
-import styles from "./homeBase.module.scss";
-import Animate from "../Animate";
 import { Container } from "@mui/material";
+import Animate from "../Animate";
+import styles from "./homeBase.module.scss";
 
 function HomeBase() {
   return (
     <div className={styles.home_base}>
       <Container maxWidth="md">
-        <Animate translate={false} keep={true}>
+        <Animate data_aos="zoom-in">
           <div className={styles.home_base_title}>
             Nền tảng Học Thông Minh có gì?
           </div>

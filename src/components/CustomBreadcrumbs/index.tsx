@@ -17,17 +17,11 @@ function CustomBreadcrumbs({ links }: { links: LinkProps[] }) {
         Trang chủ
       </Link>
       {links.map((link, index) => {
-        if (link.href) {
+        if (link.name) {
           return (
             <Link key={index} underline="none" color="inherit" href={link.href}>
               {link.name}
             </Link>
-          );
-        } else {
-          return (
-            <Typography key={index} color="text.primary">
-              {link.name}
-            </Typography>
           );
         }
       })}

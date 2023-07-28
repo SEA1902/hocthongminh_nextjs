@@ -38,7 +38,7 @@ function KnowledgeView() {
           {dataKnowledge.map((item, index) => (
             <div key={index} className={styles.item_knowledge_panel}>
               <a href="/" style={{ textDecoration: "none", color: "inherit" }}>
-                <Animate keep={true}>
+                <Animate data_aos="zoom-in">
                   <div className={styles.item_knowledge}>
                     <div className={styles.image_knowledge}>
                       <div className={styles.image_knowledge_wrapper}>

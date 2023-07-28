@@ -1,6 +1,6 @@
+import { Container } from "@mui/material";
 import BlockCategoryItem from "../BlockCategoryItem";
 import styles from "./categoryCourse.module.scss";
-import { Container } from "@mui/material";
 
 const dataCourseTHCS = [
   {

@@ -1,4 +1,6 @@
-// import "./register.scss";
+import { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
+import { Email, LocalPhoneOutlined, SchoolOutlined } from "@mui/icons-material";
 import CloseIcon from "@mui/icons-material/Close";
 import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
@@ -18,12 +20,9 @@ import {
   Alert,
   Snackbar,
 } from "@mui/material";
-import { useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
 import { useAppDispatch, useAppSelector } from "@/app/hooks";
 import { RootState } from "@/app/store";
 import { fetchRegister } from "@/app/features/users/usersApi";
-import { Email, LocalPhoneOutlined, SchoolOutlined } from "@mui/icons-material";
 
 interface RegisterProps {
   openRegister: boolean;
@@ -41,12 +40,12 @@ interface FormRegister {
 }
 
 function Register({ openRegister, setOpenRegister }: RegisterProps) {
-  const [openAlert, setOpenAlert] = useState(false);
-
   const dispatch = useAppDispatch();
   const registerStatus = useAppSelector(
     (state: RootState) => state.users.registerStatus
   );
+
+  const [openAlert, setOpenAlert] = useState(false);
   const {
     register,
     formState: { errors },
@@ -54,6 +53,14 @@ function Register({ openRegister, setOpenRegister }: RegisterProps) {
     getValues,
     reset,
   } = useForm<FormRegister>();
+
+  useEffect(() => {
+    if (registerStatus === "failed") {
+      setOpenAlert(true);
+    } else if (registerStatus === "succeeded") {
+      handleCloseModal();
+    }
+  }, [registerStatus, setOpenRegister]);
 
   const onSubmitRegister = async (data: FormRegister) => {
     await dispatch(fetchRegister(data));
@@ -63,14 +70,6 @@ function Register({ openRegister, setOpenRegister }: RegisterProps) {
     reset();
     setOpenRegister(false);
   };
-
-  useEffect(() => {
-    if (registerStatus === "failed") {
-      setOpenAlert(true);
-    } else if (registerStatus === "succeeded") {
-      handleCloseModal();
-    }
-  }, [registerStatus, setOpenRegister]);
 
   return (
     <Modal

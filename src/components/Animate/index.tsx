@@ -1,89 +1,17 @@
-import { useState, useEffect, useRef } from "react";
-import styles from "./animate.module.scss";
+import { HTMLAttributes, useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css"; // You can also use <link> for styles
 
-interface AnimateProps {
-  children: JSX.Element;
-  translate?: boolean;
-  keep?: boolean;
-  translateDirection?: "up" | "down" | "left" | "right";
+interface AnimateProps extends HTMLAttributes<HTMLDivElement> {
+  data_aos: string;
 }
-function Animate({
-  children,
-  translate,
-  keep,
-  translateDirection = "down",
-}: AnimateProps) {
-  const [animate, setAnimate] = useState(false);
-  const animatedSectionRef = useRef<HTMLDivElement>(null);
-  const lastScrollTopRef = useRef(0);
-  const sectionTopRef = useRef(0);
-
+function Animate({ children, data_aos }: AnimateProps) {
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setAnimate(true);
-          sectionTopRef.current = animatedSectionRef.current?.offsetTop || 0;
-        } else {
-          setAnimate(false);
-        }
-      },
-      { threshold: 0.5 }
-    );
-
-    const animatedSection = animatedSectionRef.current;
-    if (animatedSection) {
-      observer.observe(animatedSection);
+    if (typeof window !== "undefined") {
+      AOS.init();
     }
-
-    return () => {
-      if (animatedSection) {
-        observer.unobserve(animatedSection);
-      }
-    };
   }, []);
-
-  useEffect(() => {
-    function handleScroll() {
-      const scrollTop = document.documentElement.scrollTop;
-      const animatedSection = animatedSectionRef.current;
-
-      if (animatedSection) {
-        const sectionTop = sectionTopRef.current;
-        const rect = animatedSection.getBoundingClientRect();
-        const animateOnScrollDown =
-          rect.top < window.innerHeight && rect.bottom >= 0;
-        const animateOnScrollUp = scrollTop < sectionTop;
-
-        if (animateOnScrollDown && keep) {
-          setAnimate(true);
-        } else if (animateOnScrollUp && keep) {
-          setAnimate(false);
-        }
-      }
-
-      lastScrollTopRef.current = scrollTop;
-    }
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, [keep]);
-
-  return (
-    <div
-      className={`${
-        translate ? styles[`init-translate-${translateDirection}`] : styles.init
-      } 
-    ${animate && translate ? styles["animate-translate"] : ""} 
-    ${animate && !translate ? styles.animate : ""}`}
-      ref={animatedSectionRef}
-    >
-      {children}
-    </div>
-  );
+  return <div data-aos={data_aos}>{children}</div>;
 }
 
 export default Animate;

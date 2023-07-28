@@ -1,22 +1,23 @@
-import { getKnowledgeBySlug } from "@/app/features/knowledges/knowledgesApi";
-import { useAppDispatch, useAppSelector } from "@/app/hooks";
-import { NavigateNextOutlined } from "@mui/icons-material";
-import { Breadcrumbs, Container, Link } from "@mui/material";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
-import styles from "./knowledge.module.scss";
+import { Container } from "@mui/material";
+import { getKnowledgeBySlug } from "@/app/features/knowledges/knowledgesApi";
+import { useAppDispatch, useAppSelector } from "@/app/hooks";
 import CustomBreadcrumbs from "@/components/CustomBreadcrumbs";
+import styles from "./knowledge.module.scss";
 
-export default function KnowledgePage() {
+const KnowledgePage = () => {
   const router = useRouter();
   const { slug } = router.query;
   const dispatch = useAppDispatch();
   const knowledgePage = useAppSelector(
     (state) => state.knowledges.knowledgePage
   );
+
   useEffect(() => {
     if (slug) dispatch(getKnowledgeBySlug(slug.toString()));
   }, [slug]);
+
   const linkBreadcrumbs = [
     { name: "Chia sẻ kiến thức", href: "/chia-se-kien-thuc" },
     {
@@ -46,4 +47,5 @@ export default function KnowledgePage() {
       </div>
     </Container>
   );
-}
+};
+export default KnowledgePage;

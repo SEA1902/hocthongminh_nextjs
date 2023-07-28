@@ -1,27 +1,42 @@
-import { getKnowledgesList } from "@/app/features/knowledges/knowledgesApi";
-import { useAppDispatch, useAppSelector } from "@/app/hooks";
-import { Container, Grid, Link, Pagination } from "@mui/material";
-import { useEffect, useState } from "react";
-import styles from "./knowledge.module.scss";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
 import DOMPurify from "dompurify";
+import { Container, Grid, Link, Pagination } from "@mui/material";
+import { useAppDispatch, useAppSelector } from "@/app/hooks";
+import { getKnowledgesList } from "@/app/features/knowledges/knowledgesApi";
 import CustomBreadcrumbs from "@/components/CustomBreadcrumbs";
+import styles from "./knowledge.module.scss";
 
-function Knowledge() {
-  const [page, setPage] = useState(1);
+const Knowledge = () => {
+  const router = useRouter();
+  const { slug } = router.query;
   const dispatch = useAppDispatch();
   const knowledges = useAppSelector((state) => state.knowledges.knowledges);
+
   useEffect(() => {
-    dispatch(getKnowledgesList(page));
-  }, [page]);
+    if (slug) {
+      dispatch(getKnowledgesList(+slug[1]));
+    } else {
+      dispatch(getKnowledgesList(1));
+    }
+  }, [slug]);
 
   const handleChangePage = (
     event: React.ChangeEvent<unknown>,
     value: number
   ) => {
-    setPage(value);
+    if (value != 1) {
+      router.push("/chia-se-kien-thuc/page/" + value);
+    } else {
+      router.push("/chia-se-kien-thuc");
+    }
   };
   const linkBreadcrumbs = [
     { name: "Chia sẻ kiến thức", href: "/chia-se-kien-thuc" },
+    {
+      name: slug && "Trang " + slug[1],
+      href: slug && "/chia-se-kien-thuc/page/" + slug[1],
+    },
   ];
   return (
     <Container maxWidth="md">
@@ -77,7 +92,7 @@ function Knowledge() {
         <div className={styles.cat_pagination}>
           <Pagination
             count={knowledges?.totalPages}
-            page={page}
+            page={slug ? +slug[1] : 1}
             onChange={handleChangePage}
             color="primary"
           />
@@ -85,6 +100,6 @@ function Knowledge() {
       </div>
     </Container>
   );
-}
+};
 
 export default Knowledge;

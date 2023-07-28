@@ -1,3 +1,6 @@
+import dayjs from "dayjs";
+import { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
 import {
   Alert,
   Button,
@@ -15,10 +18,7 @@ import {
   Select,
   Snackbar,
 } from "@mui/material";
-import styles from "./profile.module.scss";
 
-import { useAppDispatch, useAppSelector } from "@/app/hooks";
-import { RootState } from "@/app/store";
 import {
   CameraAlt,
   ClassOutlined,
@@ -27,23 +27,25 @@ import {
   PersonOutline,
   SchoolOutlined,
 } from "@mui/icons-material";
-import { useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
 import { LocalizationProvider, DateCalendar } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import dayjs from "dayjs";
 import { changeAvatar, updateUser } from "@/app/features/users/usersApi";
+import { useAppDispatch, useAppSelector } from "@/app/hooks";
+import { RootState } from "@/app/store";
 import { UserInfor } from "@/types";
 import ChangePassword from "@/components/ChangePassword";
+import styles from "./profile.module.scss";
 
-function Profile() {
+const Profile = () => {
+  const dispatch = useAppDispatch();
   const userInfor = useAppSelector((state: RootState) => state.users.userInfor);
   const { loginStatus, updateStatus } = useAppSelector((state: RootState) => ({
     loginStatus: state.users.loginStatus,
     updateStatus: state.users.updateStatus,
   }));
-  const dispatch = useAppDispatch();
 
+  const [openAlert, setOpenAlert] = useState(false);
+  const [openChangePassword, setOpenChangePassword] = useState(false);
   const {
     register,
     formState: { errors },
@@ -55,24 +57,21 @@ function Profile() {
     defaultValues: userInfor,
   });
 
-  const [openAlert, setOpenAlert] = useState(false);
-  const [openChangePassword, setOpenChangePassword] = useState(false);
-
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const openCalender = Boolean(anchorEl);
   const idPoperCalender = openCalender ? "simple-popper" : undefined;
-
-  const onSubmitUpdate = async (data: UserInfor) => {
-    data.id = userInfor?.id === undefined ? "" : userInfor?.id;
-    await dispatch(updateUser(data));
-    reset();
-  };
 
   useEffect(() => {
     if (updateStatus === "failed" || updateStatus === "succeeded") {
       setOpenAlert(true);
     }
   }, [updateStatus]);
+
+  const onSubmitUpdate = async (data: UserInfor) => {
+    data.id = userInfor?.id === undefined ? "" : userInfor?.id;
+    await dispatch(updateUser(data));
+    reset();
+  };
 
   const handleChangeAvatar = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files && event.target.files.length > 0) {
@@ -398,6 +397,6 @@ function Profile() {
       </Container>
     );
   }
-}
+};
 
 export default Profile;

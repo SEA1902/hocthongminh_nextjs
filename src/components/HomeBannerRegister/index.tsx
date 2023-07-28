@@ -1,6 +1,6 @@
 import { Button, Container } from "@mui/material";
-import Animate from "../Animate";
 import { BannerActionIcon, BannerTextIcon } from "../Icons";
+import Animate from "../Animate";
 import styles from "./homeBannerRegister.module.scss";
 
 function HomeBannerRegister() {
@@ -14,17 +14,13 @@ function HomeBannerRegister() {
           <div className={styles.box_banner_container}>
             <div className={styles.banner_left}>
               <div className={styles.banner_infor}>
-                <Animate
-                  translate={true}
-                  translateDirection="right"
-                  keep={true}
-                >
+                <Animate data_aos="fade-right">
                   <div>
                     <div className={styles.banner_register}>Đăng ký</div>
                     <div className={styles.banner_account}>Tài khoản</div>
                   </div>
                 </Animate>
-                <Animate translate={true} keep={true}>
+                <Animate data_aos="fade-down">
                   <div className={styles.banner_free}>FREE</div>
                 </Animate>
               </div>
@@ -59,12 +55,12 @@ function HomeBannerRegister() {
             </div>
             <div className={styles.banner_right}>
               <div className={styles.banner_click_image}>
-                <Animate translate={true} keep={true}>
+                <Animate data_aos="fade-down">
                   <img alt="" src="/images/banner-click.png" />
                 </Animate>
               </div>
               <div className={styles.banner_lock_image}>
-                <Animate translate={true} translateDirection="left" keep={true}>
+                <Animate data_aos="fade-left">
                   <img alt="" src="/images/banner-lock.png" />
                 </Animate>
               </div>

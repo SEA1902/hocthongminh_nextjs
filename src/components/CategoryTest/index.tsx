@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import styles from "./categoryTest.module.scss";
-import Animate from "../Animate";
 import { Container } from "@mui/material";
+import Animate from "../Animate";
+import styles from "./categoryTest.module.scss";
 
 const tabs = [
   {
@@ -81,12 +81,6 @@ function CategoryTest() {
   const [selectedTab, setSelectedTab] = useState(tabs[0]);
   const [loading, setLoading] = useState(false);
 
-  const handleSelectItem = (item: any) => {
-    setSelectedTab(item);
-    setLoading(true);
-    setTimeout(() => setLoading(false), 1000);
-  };
-
   useEffect(() => {
     const tabActive = document.querySelector(
       "#tab-selected"
@@ -99,10 +93,16 @@ function CategoryTest() {
     }
   }, [selectedTab]);
 
+  const handleSelectItem = (item: any) => {
+    setSelectedTab(item);
+    setLoading(true);
+    setTimeout(() => setLoading(false), 1000);
+  };
+
   return (
     <div className={styles.category_test}>
       <Container maxWidth="md">
-        <Animate translate={true} keep={false}>
+        <Animate data_aos="fade-down">
           <div className={styles.category_test_header}>
             {tabs.map((item, index) => (
               <div
@@ -120,7 +120,7 @@ function CategoryTest() {
           </div>
         </Animate>
 
-        <Animate translate={false} keep={true}>
+        <Animate data_aos="zoom-in">
           <div className={styles.category_test_description}>
             {selectedTab.description}
           </div>

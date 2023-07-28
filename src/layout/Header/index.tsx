@@ -1,5 +1,5 @@
-import styles from "./header.module.scss";
 import RightNavHeader from "./RightNavHeader";
+import styles from "./header.module.scss";
 
 function Header() {
   return (

@@ -1,9 +1,9 @@
-import styles from "./homeFeedback.module.scss";
-import Animate from "../Animate";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Container, Rating } from "@mui/material";
-import "swiper/scss";
 import { useState } from "react";
+import { Container, Rating } from "@mui/material";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/scss";
+import Animate from "../Animate";
+import styles from "./homeFeedback.module.scss";
 
 const dataFeedback = [
   {
@@ -61,7 +61,7 @@ function HomeFeedback() {
   return (
     <div className={styles.home_feedback}>
       <Container maxWidth="md">
-        <Animate translate={false} keep={true}>
+        <Animate data_aos="zoom-in">
           <div className={styles.home_feedback_title}>
             Mọi người nghĩ gì về chúng tôi
           </div>

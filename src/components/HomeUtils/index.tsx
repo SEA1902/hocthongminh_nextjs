@@ -1,8 +1,8 @@
-import styles from "./homeUtils.module.scss";
-import Animate from "../Animate";
+import { Container } from "@mui/material";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
-import { Container } from "@mui/material";
+import Animate from "../Animate";
+import styles from "./homeUtils.module.scss";
 
 const dataSwipper = [
   {
@@ -42,7 +42,7 @@ function HomeUtils() {
   return (
     <div className={styles.home_utils}>
       <Container maxWidth="md">
-        <Animate translate={false} keep={true}>
+        <Animate data_aos="zoom-in">
           <div className={styles.home_utils_header}>
             <div className={styles.home_utils_title}>Lợi ích</div>
             <div className={styles.home_utils_description}>
