@@ -1,25 +1,18 @@
 import { useRouter } from "next/router";
-import { useEffect } from "react";
+import { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import DOMPurify from "dompurify";
 import { Container, Grid, Link, Pagination } from "@mui/material";
-import { useAppDispatch, useAppSelector } from "@/app/hooks";
 import { getKnowledgesList } from "@/app/features/knowledges/knowledgesApi";
+import { AppDispatch, wrapper } from "@/app/store";
 import CustomBreadcrumbs from "@/components/CustomBreadcrumbs";
+import { Knowledge } from "@/types";
 import styles from "./knowledge.module.scss";
 
-const Knowledge = () => {
+const Knowledge = ({
+  knowledges,
+}: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const router = useRouter();
   const { slug } = router.query;
-  const dispatch = useAppDispatch();
-  const knowledges = useAppSelector((state) => state.knowledges.knowledges);
-
-  useEffect(() => {
-    if (slug) {
-      dispatch(getKnowledgesList(+slug[1]));
-    } else {
-      dispatch(getKnowledgesList(1));
-    }
-  }, [slug]);
 
   const handleChangePage = (
     event: React.ChangeEvent<unknown>,
@@ -48,41 +41,43 @@ const Knowledge = () => {
               <h1 className={styles.cat_title}>Chia sẻ kiến thức</h1>
               <div className={styles.cat_posts_list}>
                 <Grid container spacing={3}>
-                  {knowledges?.knowledgesList?.map((knowledge, index) => {
-                    const sanitizedHtml = DOMPurify.sanitize(
-                      knowledge?.content || ""
-                    );
-                    const firstParagraph =
-                      sanitizedHtml.match(/<p>.*?<\/p>/)?.[0] || "";
+                  {knowledges?.knowledgesList?.map(
+                    (knowledge: Knowledge, index: number) => {
+                      const sanitizedHtml = DOMPurify.sanitize(
+                        knowledge?.content || ""
+                      );
+                      const firstParagraph =
+                        sanitizedHtml.match(/<p>.*?<\/p>/)?.[0] || "";
 
-                    return (
-                      <Grid item xs={12} sm={6} key={index}>
-                        <Link
-                          href={"/chia-se-kien-thuc/" + knowledge.slug}
-                          underline="none"
-                          color="inherit"
-                        >
-                          <div className={styles.post_item}>
-                            <div className={styles.post_thumb}>
-                              <div className={styles.wp_post_thumb}>
-                                <img src={knowledge.image} />
+                      return (
+                        <Grid item xs={12} sm={6} key={index}>
+                          <Link
+                            href={"/chia-se-kien-thuc/" + knowledge.slug}
+                            underline="none"
+                            color="inherit"
+                          >
+                            <div className={styles.post_item}>
+                              <div className={styles.post_thumb}>
+                                <div className={styles.wp_post_thumb}>
+                                  <img src={knowledge.image} />
+                                </div>
                               </div>
+                              <h2 className={styles.post_title}>
+                                {knowledge.title}
+                              </h2>
+                              <div className={styles.post_meta}></div>
+                              <div
+                                className={styles.post_excerpt}
+                                dangerouslySetInnerHTML={{
+                                  __html: firstParagraph,
+                                }}
+                              />
                             </div>
-                            <h2 className={styles.post_title}>
-                              {knowledge.title}
-                            </h2>
-                            <div className={styles.post_meta}></div>
-                            <div
-                              className={styles.post_excerpt}
-                              dangerouslySetInnerHTML={{
-                                __html: firstParagraph,
-                              }}
-                            />
-                          </div>
-                        </Link>
-                      </Grid>
-                    );
-                  })}
+                          </Link>
+                        </Grid>
+                      );
+                    }
+                  )}
                 </Grid>
               </div>
             </div>
@@ -102,4 +97,17 @@ const Knowledge = () => {
   );
 };
 
+export const getServerSideProps: GetServerSideProps =
+  wrapper.getServerSideProps((store) => async (context) => {
+    const slug = context?.params?.slug;
+
+    const { dispatch } = store as { dispatch: AppDispatch };
+    if (slug) {
+      await dispatch(getKnowledgesList(+slug[1]));
+    } else {
+      await dispatch(getKnowledgesList(1));
+    }
+    const knowledges = store.getState().knowledges.knowledges;
+    return { props: { knowledges } };
+  });
 export default Knowledge;

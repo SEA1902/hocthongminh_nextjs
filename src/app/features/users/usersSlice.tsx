@@ -9,6 +9,7 @@ import {
   getUserFromToken,
   updateUser,
 } from "./usersApi";
+import { setCookie } from "@/utils/cookies";
 
 export interface UserState {
   userInfor?: UserInfor;
@@ -35,6 +36,7 @@ export const usersSlice = createSlice({
           loginStatus: "succeeded",
           userInfor: action.payload,
         };
+        setCookie("token", action.payload.token, 60 * 60 * 24);
         return state;
       })
       .addCase(fetchLogin.rejected, (state, action) => {
@@ -42,6 +44,7 @@ export const usersSlice = createSlice({
       })
       .addCase(fetchLogout.fulfilled, (state, action) => {
         state = { loginStatus: "idle" };
+        localStorage.removeItem("token");
         return state;
       })
       .addCase(fetchRegister.pending, (state, action) => {

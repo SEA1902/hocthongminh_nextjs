@@ -1,23 +1,13 @@
-import { useRouter } from "next/router";
-import { useEffect } from "react";
+import { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import { Container } from "@mui/material";
 import { getKnowledgeBySlug } from "@/app/features/knowledges/knowledgesApi";
-import { useAppDispatch, useAppSelector } from "@/app/hooks";
+import { AppDispatch, wrapper } from "@/app/store";
 import CustomBreadcrumbs from "@/components/CustomBreadcrumbs";
 import styles from "./knowledge.module.scss";
 
-const KnowledgePage = () => {
-  const router = useRouter();
-  const { slug } = router.query;
-  const dispatch = useAppDispatch();
-  const knowledgePage = useAppSelector(
-    (state) => state.knowledges.knowledgePage
-  );
-
-  useEffect(() => {
-    if (slug) dispatch(getKnowledgeBySlug(slug.toString()));
-  }, [slug]);
-
+const KnowledgePage = ({
+  knowledgePage,
+}: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const linkBreadcrumbs = [
     { name: "Chia sẻ kiến thức", href: "/chia-se-kien-thuc" },
     {
@@ -48,4 +38,17 @@ const KnowledgePage = () => {
     </Container>
   );
 };
+
+export const getServerSideProps: GetServerSideProps =
+  wrapper.getServerSideProps((store) => async (context) => {
+    const slug = context?.params?.slug;
+
+    const { dispatch } = store as { dispatch: AppDispatch };
+    if (slug) await dispatch(getKnowledgeBySlug(slug.toString()));
+
+    const knowledgePage = store.getState().knowledges.knowledgePage;
+
+    return { props: { knowledgePage } };
+  });
+
 export default KnowledgePage;

@@ -1,6 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import CryptoJS from "crypto-js";
-import Cookies from "js-cookie";
 import { client } from "@/api/client";
 import { UserInfor } from "@/types";
 
@@ -52,13 +51,7 @@ export const fetchLogin = createAsyncThunk(
       username: loginData.username,
       password: hashedPassword,
     });
-    console.log(1);
 
-    const token = response.headers.get("Set-Cookie");
-
-    // Print the value of the "token" cookie
-    console.log(response.headers, token);
-    // Cookies.set("token", response.headers,{ httpOnly: true, maxAge: 86400 });
     return response.data;
   }
 );
