@@ -1,6 +1,7 @@
 import dayjs from "dayjs";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import Image from "next/image";
 import {
   Alert,
   Button,
@@ -118,7 +119,7 @@ const Profile = () => {
                   <div className={styles.profile_page_box_avatar}>
                     <div style={{ position: "relative" }}>
                       <div className={styles.profile_image}>
-                        <img src={userInfor?.avatar} alt="" />
+                        <Image src={userInfor?.avatar} alt="" />
                       </div>
                       <label className={styles.upload_button}>
                         <input

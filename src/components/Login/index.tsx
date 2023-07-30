@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import Image from "next/image";
 import CloseIcon from "@mui/icons-material/Close";
 import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
@@ -192,7 +193,7 @@ function Login({ openLogin, setOpenLogin }: LoginProps) {
                 <Button
                   className="btn-submit2"
                   startIcon={
-                    <img
+                    <Image
                       src="/images/icon/google-icon.svg"
                       alt=""
                       style={{ width: "25px" }}

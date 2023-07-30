@@ -1,3 +1,5 @@
+import Link from "next/link";
+import Image from "next/image";
 import { Container } from "@mui/material";
 import Animate from "../Animate";
 import styles from "./knowledgeView.module.scss";
@@ -37,12 +39,15 @@ function KnowledgeView() {
         <div className={styles.block_knowledge}>
           {dataKnowledge.map((item, index) => (
             <div key={index} className={styles.item_knowledge_panel}>
-              <a href="/" style={{ textDecoration: "none", color: "inherit" }}>
+              <Link
+                href="/"
+                style={{ textDecoration: "none", color: "inherit" }}
+              >
                 <Animate data_aos="zoom-in">
                   <div className={styles.item_knowledge}>
                     <div className={styles.image_knowledge}>
                       <div className={styles.image_knowledge_wrapper}>
-                        <img alt="" src={item.image} />
+                        <Image alt="" src={item.image} />
                       </div>
                     </div>
                     <div className={styles.info_knowledge}>
@@ -53,7 +58,7 @@ function KnowledgeView() {
                     </div>
                   </div>
                 </Animate>
-              </a>
+              </Link>
             </div>
           ))}
         </div>

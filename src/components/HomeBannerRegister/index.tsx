@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Button, Container } from "@mui/material";
 import { BannerActionIcon, BannerTextIcon } from "../Icons";
 import Animate from "../Animate";
@@ -56,12 +57,12 @@ function HomeBannerRegister() {
             <div className={styles.banner_right}>
               <div className={styles.banner_click_image}>
                 <Animate data_aos="fade-down">
-                  <img alt="" src="/images/banner-click.png" />
+                  <Image alt="" src="/images/banner-click.png" />
                 </Animate>
               </div>
               <div className={styles.banner_lock_image}>
                 <Animate data_aos="fade-left">
-                  <img alt="" src="/images/banner-lock.png" />
+                  <Image alt="" src="/images/banner-lock.png" />
                 </Animate>
               </div>
             </div>

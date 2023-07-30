@@ -1,3 +1,5 @@
+import Link from "next/link";
+import Image from "next/image";
 import RightNavHeader from "./RightNavHeader";
 import styles from "./header.module.scss";
 
@@ -8,13 +10,13 @@ function Header() {
         <div className={styles.header_nav}>
           <div className={styles.left_nav_header}>
             <div className={styles.logo}>
-              <a href="/">
-                <img
+              <Link href="/">
+                <Image
                   alt="logo"
                   src="/images/logo.svg"
                   className={styles.image_logo}
-                ></img>
-              </a>
+                ></Image>
+              </Link>
             </div>
           </div>
 

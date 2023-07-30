@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Link from "next/link";
 import { ExpandMore } from "@mui/icons-material";
 import styles from "./navbar.module.scss";
 function DrawerMobile() {
@@ -28,18 +29,18 @@ function DrawerMobile() {
             isOpen ? styles.activeDropdown : ""
           }`}
         >
-          <a href="/" className={styles.mobile_dropdown_item}>
+          <Link href="/" className={styles.mobile_dropdown_item}>
             <div className={styles.mobile_dropdown_title}>Lớp 6</div>
-          </a>
-          <a href="/" className={styles.mobile_dropdown_item}>
+          </Link>
+          <Link href="/" className={styles.mobile_dropdown_item}>
             <div className={styles.mobile_dropdown_title}>Lớp 7</div>
-          </a>
-          <a href="/" className={styles.mobile_dropdown_item}>
+          </Link>
+          <Link href="/" className={styles.mobile_dropdown_item}>
             <div className={styles.mobile_dropdown_title}>Lớp 8</div>
-          </a>
-          <a href="/" className={styles.mobile_dropdown_item}>
+          </Link>
+          <Link href="/" className={styles.mobile_dropdown_item}>
             <div className={styles.mobile_dropdown_title}>Lớp 9</div>
-          </a>
+          </Link>
         </div>
       </div>
 
@@ -53,15 +54,15 @@ function DrawerMobile() {
             isOpenTwo ? styles.activeDropdown : ""
           }`}
         >
-          <a href="/" className={styles.mobile_dropdown_item}>
+          <Link href="/" className={styles.mobile_dropdown_item}>
             <div className={styles.mobile_dropdown_title}>Lớp 10</div>
-          </a>
-          <a href="/" className={styles.mobile_dropdown_item}>
+          </Link>
+          <Link href="/" className={styles.mobile_dropdown_item}>
             <div className={styles.mobile_dropdown_title}>Lớp 11</div>
-          </a>
-          <a href="/" className={styles.mobile_dropdown_item}>
+          </Link>
+          <Link href="/" className={styles.mobile_dropdown_item}>
             <div className={styles.mobile_dropdown_title}>Lớp 12</div>
-          </a>
+          </Link>
         </div>
       </div>
       <div className={styles.menu_item_mobile}>

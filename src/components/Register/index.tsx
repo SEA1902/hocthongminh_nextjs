@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import Image from "next/image";
 import { Email, LocalPhoneOutlined, SchoolOutlined } from "@mui/icons-material";
 import CloseIcon from "@mui/icons-material/Close";
 import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
@@ -23,7 +24,6 @@ import {
 import { useAppDispatch, useAppSelector } from "@/app/hooks";
 import { RootState } from "@/app/store";
 import { fetchRegister } from "@/app/features/users/usersApi";
-
 interface RegisterProps {
   openRegister: boolean;
   setOpenRegister: (open: boolean) => void;
@@ -365,7 +365,7 @@ function Register({ openRegister, setOpenRegister }: RegisterProps) {
               <Button
                 className="btn-submit2"
                 startIcon={
-                  <img
+                  <Image
                     src="/images/icon/google-icon.svg"
                     alt=""
                     style={{ width: "25px" }}

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Image from "next/image";
 import { Container, Rating } from "@mui/material";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/scss";
@@ -78,11 +79,14 @@ function HomeFeedback() {
                   className={styles.active_feedback}
                   style={activeSlideIndex === index ? { display: "block" } : {}}
                 >
-                  <img alt="" src="/images/homeFeedback/active-feedback.svg" />
+                  <Image
+                    alt=""
+                    src="/images/homeFeedback/active-feedback.svg"
+                  />
                 </div>
                 <div className={styles.top_feedback}>
                   <div className={styles.image}>
-                    <img src={item.image} alt="" />
+                    <Image src={item.image} alt="" />
                   </div>
                   <div>
                     <div className={styles.name}>{item.name}</div>
@@ -109,11 +113,14 @@ function HomeFeedback() {
                     activeSlideIndex === index + 4 ? { display: "block" } : {}
                   }
                 >
-                  <img alt="" src="/images/homeFeedback/active-feedback.svg" />
+                  <Image
+                    alt=""
+                    src="/images/homeFeedback/active-feedback.svg"
+                  />
                 </div>
                 <div className={styles.top_feedback}>
                   <div className={styles.image}>
-                    <img src={item.image} alt="" />
+                    <Image src={item.image} alt="" />
                   </div>
                   <div>
                     <div className={styles.name}>{item.name}</div>

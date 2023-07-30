@@ -20,18 +20,18 @@ function MainMenu({ display }: Props) {
           <ExpandMore />
         </div>
         <div className={styles.dropdown_content}>
-          <a href="/" className={styles.dropdown_item}>
+          <Link href="/" className={styles.dropdown_item}>
             <div className={styles.dropdown_title}>Lớp 6</div>
-          </a>
-          <a href="/" className={styles.dropdown_item}>
+          </Link>
+          <Link href="/" className={styles.dropdown_item}>
             <div className={styles.dropdown_title}>Lớp 7</div>
-          </a>
-          <a href="/" className={styles.dropdown_item}>
+          </Link>
+          <Link href="/" className={styles.dropdown_item}>
             <div className={styles.dropdown_title}>Lớp 8</div>
-          </a>
-          <a href="/" className={styles.dropdown_item}>
+          </Link>
+          <Link href="/" className={styles.dropdown_item}>
             <div className={styles.dropdown_title}>Lớp 9</div>
-          </a>
+          </Link>
         </div>
       </div>
 
@@ -41,15 +41,15 @@ function MainMenu({ display }: Props) {
           <ExpandMore />
         </div>
         <div className={styles.dropdown_content}>
-          <a href="/" className={styles.dropdown_item}>
+          <Link href="/" className={styles.dropdown_item}>
             <div className={styles.dropdown_title}>Lớp 10</div>
-          </a>
-          <a href="/" className={styles.dropdown_item}>
+          </Link>
+          <Link href="/" className={styles.dropdown_item}>
             <div className={styles.dropdown_title}>Lớp 11</div>
-          </a>
-          <a href="/" className={styles.dropdown_item}>
+          </Link>
+          <Link href="/" className={styles.dropdown_item}>
             <div className={styles.dropdown_title}>Lớp 12</div>
-          </a>
+          </Link>
         </div>
       </div>
       <div className={styles.menu_item}>

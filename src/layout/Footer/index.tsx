@@ -1,3 +1,5 @@
+import Image from "next/image";
+import Link from "next/link";
 import { EmailIcon, PositionIcon } from "@/components/Icons";
 import styles from "./footer.module.scss";
 
@@ -9,7 +11,7 @@ function Footer() {
           <div className={`${styles.footer_contact} ${styles.grid_4}`}>
             <div className={styles.item_contact}>
               <div className={styles.logo}>
-                <img alt="logo" src="/images/logo.svg" />
+                <Image alt="logo" src="/images/logo.svg" />
               </div>
             </div>
             <div className={styles.item_contact}>
@@ -34,24 +36,24 @@ function Footer() {
               <div className={`${styles.center_footer_item} ${styles.grid_3}`}>
                 <div className={styles.title_footer_center}>Về chúng tôi</div>
                 <div className={styles.list_contact}>
-                  <a href="/">Giới thiệu</a>
-                  <a href="/">Liên hệ</a>
+                  <Link href="/">Giới thiệu</Link>
+                  <Link href="/">Liên hệ</Link>
                 </div>
               </div>
               <div className={`${styles.center_footer_item} ${styles.grid_4}`}>
                 <div className={styles.title_footer_center}>Chính sách</div>
                 <div className={styles.list_contact}>
-                  <a href="/">Điều khoản sử dụng</a>
-                  <a href="/">Chính sách bảo mật</a>
+                  <Link href="/">Điều khoản sử dụng</Link>
+                  <Link href="/">Chính sách bảo mật</Link>
                 </div>
               </div>
               <div className={`${styles.center_footer_item} ${styles.grid_5}`}>
                 <div className={styles.title_footer_center}>Thông tin</div>
                 <div className={styles.list_contact}>
-                  <a href="/">Chia sẻ kiến thức</a>
-                  <a href="/">Tin tức</a>
-                  <a href="/">Tính điểm xét tốt nghiệp</a>
-                  <a href="/">Tính điểm xét học bạ</a>
+                  <Link href="/">Chia sẻ kiến thức</Link>
+                  <Link href="/">Tin tức</Link>
+                  <Link href="/">Tính điểm xét tốt nghiệp</Link>
+                  <Link href="/">Tính điểm xét học bạ</Link>
                 </div>
               </div>
             </div>
@@ -63,25 +65,25 @@ function Footer() {
             </div>
 
             <div className={styles.icon_contact}>
-              <a href="/">
-                <img alt="" src="/images/footer/facebook.svg" />
-              </a>
-              <a href="/">
-                <img alt="" src="/images/footer/youtube.svg" />
-              </a>
-              <a href="/">
-                <img alt="" src="/images/footer/twitter.svg" />
-              </a>
-              <a href="/">
-                <img alt="" src="/images/footer/pinterest.svg" />
-              </a>
-              <a href="/">
-                <img alt="" src="/images/footer/tiktok.png" />
-              </a>
+              <Link href="/">
+                <Image alt="" src="/images/footer/facebook.svg" />
+              </Link>
+              <Link href="/">
+                <Image alt="" src="/images/footer/youtube.svg" />
+              </Link>
+              <Link href="/">
+                <Image alt="" src="/images/footer/twitter.svg" />
+              </Link>
+              <Link href="/">
+                <Image alt="" src="/images/footer/pinterest.svg" />
+              </Link>
+              <Link href="/">
+                <Image alt="" src="/images/footer/tiktok.png" />
+              </Link>
             </div>
-            <a href="/">
-              <img alt="" src="/images/footer/dmca-badge.png" />
-            </a>
+            <Link href="/">
+              <Image alt="" src="/images/footer/dmca-badge.png" />
+            </Link>
           </div>
         </div>
       </div>

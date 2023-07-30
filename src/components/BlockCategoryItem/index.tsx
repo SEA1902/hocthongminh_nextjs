@@ -1,3 +1,5 @@
+import Link from "next/link";
+import Image from "next/image";
 import { Button } from "@mui/material";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import Animate from "../Animate";
@@ -15,10 +17,10 @@ function BlockCategoryItem({
   return (
     <div className={styles.block_category_component}>
       <Animate data_aos="zoom-in">
-        <a href="/" className={styles.item_link}>
+        <Link href="/" className={styles.item_link}>
           <div className={styles.course_item}>
             <div className={styles.course_item_image}>
-              <img alt="" src={itemImage} />
+              <Image alt="" src={itemImage} />
             </div>
             <div className={styles.course_item_body}>{itemBody}</div>
             <div
@@ -35,7 +37,7 @@ function BlockCategoryItem({
               </Button>
             </div>
           </div>
-        </a>
+        </Link>
       </Animate>
     </div>
   );

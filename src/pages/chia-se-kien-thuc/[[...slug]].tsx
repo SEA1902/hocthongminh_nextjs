@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
 import { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import DOMPurify from "dompurify";
+import Image from "next/image";
 import { Container, Grid, Link, Pagination } from "@mui/material";
 import { getKnowledgesList } from "@/app/features/knowledges/knowledgesApi";
 import { AppDispatch, wrapper } from "@/app/store";
@@ -59,7 +60,7 @@ const Knowledge = ({
                             <div className={styles.post_item}>
                               <div className={styles.post_thumb}>
                                 <div className={styles.wp_post_thumb}>
-                                  <img src={knowledge.image} />
+                                  <Image src={knowledge.image} alt="" />
                                 </div>
                               </div>
                               <h2 className={styles.post_title}>

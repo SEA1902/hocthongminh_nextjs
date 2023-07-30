@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import Link from "next/link";
+import Image from "next/image";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
 import { AppBar, Box, Drawer, IconButton, Typography } from "@mui/material";
@@ -66,13 +68,13 @@ function Navbar(props: Props) {
               <div className={styles.app_bar_header_nav}>
                 <div className={styles.left_nav_header}>
                   <div className={styles.logo}>
-                    <a href="/">
-                      <img
+                    <Link href="/">
+                      <Image
                         alt="logo"
                         src="/images/logo.svg"
                         className={styles.image_logo}
-                      ></img>
-                    </a>
+                      ></Image>
+                    </Link>
                   </div>
                 </div>
                 <RightNavHeader />
