@@ -44,7 +44,7 @@ export const usersSlice = createSlice({
       })
       .addCase(fetchLogout.fulfilled, (state, action) => {
         state = { loginStatus: "idle" };
-        localStorage.removeItem("token");
+        document.cookie = "";
         return state;
       })
       .addCase(fetchRegister.pending, (state, action) => {
