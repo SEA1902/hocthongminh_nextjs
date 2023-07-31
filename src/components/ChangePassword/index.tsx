@@ -65,6 +65,7 @@ const ChangePassword = ({
       newPassword: data?.newPassword ? data.newPassword : "",
     };
     await dispatch(changePassword(changePasswordData));
+    setOpenChangePassword(false);
     reset();
   };
 

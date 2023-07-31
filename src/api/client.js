@@ -1,3 +1,6 @@
+export const localApi = "https://koolsoft-hocthongminh.onrender.com/";
+// export const localApi = "http://localhost:3001/";
+
 export async function client(endpoint, { body, ...customConfig } = {}) {
   const headers = {
     "Content-Type": "application/json",
@@ -18,7 +21,9 @@ export async function client(endpoint, { body, ...customConfig } = {}) {
 
   let data;
   try {
-    const response = await fetch(endpoint, config);
+    const response = await fetch(endpoint, config).catch((err) => {
+      console.log("catch err: ", err);
+    });
     data = await response.json();
     if (response.ok) {
       // Return a result object similar to Axios
@@ -36,9 +41,9 @@ export async function client(endpoint, { body, ...customConfig } = {}) {
 }
 
 client.get = function (endpoint, customConfig = {}) {
-  return client(endpoint, { ...customConfig, method: "GET" });
+  return client(localApi + endpoint, { ...customConfig, method: "GET" });
 };
 
 client.post = function (endpoint, body, customConfig = {}) {
-  return client(endpoint, { ...customConfig, body });
+  return client(localApi + endpoint, { ...customConfig, body });
 };

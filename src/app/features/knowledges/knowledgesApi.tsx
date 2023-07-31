@@ -6,11 +6,11 @@ export const getKnowledgesList = createAsyncThunk(
   async (page: number) => {
     try {
       const response = await client.get(
-        "http://localhost:3001/knowledges/get-knowledge-list/?page=" + page
+        "knowledges/get-knowledge-list/?page=" + page
       );
       return response.data;
     } catch (err) {
-      console.log("có lỗi rồi", err);
+      console.log("có lỗi getKnowledgesList:", err);
     }
   }
 );
@@ -18,9 +18,7 @@ export const getKnowledgeBySlug = createAsyncThunk(
   "knowledges/getKnowledgeBySlug",
   async (slug: string) => {
     try {
-      const response = await client.get(
-        "http://localhost:3001/knowledges/get-by-slug?slug=" + slug
-      );
+      const response = await client.get("knowledges/get-by-slug?slug=" + slug);
       return response.data;
     } catch (err) {
       console.log("có lỗi:", err);

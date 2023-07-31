@@ -1,7 +1,6 @@
 import dayjs from "dayjs";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import Image from "next/image";
 import {
   Alert,
   Button,
@@ -71,7 +70,6 @@ const Profile = () => {
   const onSubmitUpdate = async (data: UserInfor) => {
     data.id = userInfor?.id === undefined ? "" : userInfor?.id;
     await dispatch(updateUser(data));
-    reset();
   };
 
   const handleChangeAvatar = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -119,7 +117,7 @@ const Profile = () => {
                   <div className={styles.profile_page_box_avatar}>
                     <div style={{ position: "relative" }}>
                       <div className={styles.profile_image}>
-                        <Image src={userInfor?.avatar} alt="" />
+                        <img src={userInfor?.avatar} alt="" />
                       </div>
                       <label className={styles.upload_button}>
                         <input

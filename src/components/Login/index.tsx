@@ -196,7 +196,8 @@ function Login({ openLogin, setOpenLogin }: LoginProps) {
                     <Image
                       src="/images/icon/google-icon.svg"
                       alt=""
-                      style={{ width: "25px" }}
+                      width={25}
+                      height={25}
                     />
                   }
                 >

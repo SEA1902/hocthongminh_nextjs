@@ -13,7 +13,7 @@ const Home = () => {
     <div className={styles.main}>
       <div className={styles.banner_pages}>
         <div className={styles.banner_item}>
-          <Image
+          <img
             alt="Banner Home"
             src="/images/new-banner.png"
             className={styles.banner_image}
