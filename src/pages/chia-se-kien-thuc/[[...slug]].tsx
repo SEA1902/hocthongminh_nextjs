@@ -7,13 +7,13 @@ import { AppDispatch, wrapper } from "@/app/store";
 import CustomBreadcrumbs from "@/components/CustomBreadcrumbs";
 import { Knowledge } from "@/types";
 import styles from "./knowledge.module.scss";
+import KnowledgeItem from "@/components/KnowledgeItem";
 
 const Knowledge = ({
   knowledges,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const router = useRouter();
   const { slug } = router.query;
-
   const handleChangePage = (
     event: React.ChangeEvent<unknown>,
     value: number
@@ -42,41 +42,9 @@ const Knowledge = ({
               <div className={styles.cat_posts_list}>
                 <Grid container spacing={3}>
                   {knowledges?.knowledgesList?.map(
-                    (knowledge: Knowledge, index: number) => {
-                      const sanitizedHtml = DOMPurify.sanitize(
-                        knowledge?.content || ""
-                      );
-                      const firstParagraph =
-                        sanitizedHtml.match(/<p>.*?<\/p>/)?.[0] || "";
-
-                      return (
-                        <Grid item xs={12} sm={6} key={index}>
-                          <Link
-                            href={"/chia-se-kien-thuc/" + knowledge.slug}
-                            underline="none"
-                            color="inherit"
-                          >
-                            <div className={styles.post_item}>
-                              <div className={styles.post_thumb}>
-                                <div className={styles.wp_post_thumb}>
-                                  <img src={knowledge.image} alt="" />
-                                </div>
-                              </div>
-                              <h2 className={styles.post_title}>
-                                {knowledge.title}
-                              </h2>
-                              <div className={styles.post_meta}></div>
-                              <div
-                                className={styles.post_excerpt}
-                                dangerouslySetInnerHTML={{
-                                  __html: firstParagraph,
-                                }}
-                              />
-                            </div>
-                          </Link>
-                        </Grid>
-                      );
-                    }
+                    (knowledge: Knowledge, index: number) => (
+                      <KnowledgeItem knowledge={knowledge} key={index} />
+                    )
                   )}
                 </Grid>
               </div>
