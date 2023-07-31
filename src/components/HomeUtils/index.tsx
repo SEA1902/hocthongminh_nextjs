@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { Container } from "@mui/material";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -54,7 +53,7 @@ function HomeUtils() {
 
         <div className={styles.home_utils_body}>
           <div className={styles.home_utils_image}>
-            <Image
+            <img
               alt=""
               src="/images/phone-wrapper.png"
               className="home-image-phone"
@@ -65,7 +64,7 @@ function HomeUtils() {
               <SwiperSlide key={index}>
                 <div className={styles.util_item}>
                   <div className={styles.util_item_image}>
-                    <Image alt="" src={item.image} />
+                    <img alt="" src={item.image} />
                   </div>
                   <div className={styles.util_item_des}>{item.description}</div>
                 </div>
@@ -75,7 +74,7 @@ function HomeUtils() {
               <SwiperSlide key={index}>
                 <div className={styles.util_item}>
                   <div className={styles.util_item_image}>
-                    <Image alt="" src={item.image} />
+                    <img alt="" src={item.image} />
                   </div>
                   <div className={styles.util_item_des}>{item.description}</div>
                 </div>

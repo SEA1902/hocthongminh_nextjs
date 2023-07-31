@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 import { Container } from "@mui/material";
 import Animate from "../Animate";
 import styles from "./knowledgeView.module.scss";
@@ -47,7 +46,7 @@ function KnowledgeView() {
                   <div className={styles.item_knowledge}>
                     <div className={styles.image_knowledge}>
                       <div className={styles.image_knowledge_wrapper}>
-                        <Image alt="" src={item.image} />
+                        <img alt="" src={item.image} />
                       </div>
                     </div>
                     <div className={styles.info_knowledge}>

@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import CryptoJS from "crypto-js";
-import { client } from "@/api/client";
+import { client, localApi } from "@/api/client";
 import { UserInfor } from "@/types";
 
 interface loginForm {
@@ -28,12 +28,9 @@ const secretKey = "hocthongminh";
 export const getUserFromToken = createAsyncThunk(
   "users/getUserFromToken",
   async (token: string) => {
-    const response = await client.post(
-      "http://localhost:3001/users/get-user-from-token",
-      {
-        token: token,
-      }
-    );
+    const response = await client.post("users/get-user-from-token", {
+      token: token,
+    });
 
     return response.data;
   }
@@ -47,16 +44,19 @@ export const fetchLogin = createAsyncThunk(
       secretKey
     ).toString();
 
-    const response = await client.post("http://localhost:3001/users/login", {
-      username: loginData.username,
-      password: hashedPassword,
-    });
-
-    return response.data;
+    try {
+      const response = await client.post("users/login", {
+        username: loginData.username,
+        password: hashedPassword,
+      });
+      return response.data;
+    } catch (err) {
+      console.log("có lỗi login:", err);
+    }
   }
 );
 export const fetchLogout = createAsyncThunk("users/fetchLogout", async () => {
-  const response = await client.post("http://localhost:3001/users/logout", {});
+  const response = await client.post("users/logout", {});
   return response.data;
 });
 export const fetchRegister = createAsyncThunk(
@@ -70,10 +70,7 @@ export const fetchRegister = createAsyncThunk(
       ...registerData,
       password: hashedPassword,
     };
-    const response = await client.post(
-      "http://localhost:3001/users/register",
-      registerData
-    );
+    const response = await client.post("users/register", registerData);
     return response.data;
   }
 );
@@ -81,10 +78,7 @@ export const fetchRegister = createAsyncThunk(
 export const updateUser = createAsyncThunk(
   "users/updateUser",
   async (updateData: UserInfor) => {
-    const response = await client.post(
-      "http://localhost:3001/users/update-information",
-      updateData
-    );
+    const response = await client.post("users/update-information", updateData);
 
     return response.data;
   }
@@ -108,7 +102,7 @@ export const changePassword = createAsyncThunk(
         newPassword: hashedNewPassword,
       };
       const response = await client.post(
-        "http://localhost:3001/users/change-password",
+        "users/change-password",
         changePasswordData
       );
       return response.data;
@@ -121,13 +115,10 @@ export const changeAvatar = createAsyncThunk(
   "users/changeAvatar",
   async (formData: FormData) => {
     try {
-      const response = await fetch(
-        "http://localhost:3001/users/change-avatar",
-        {
-          method: "POST",
-          body: formData,
-        }
-      )
+      const response = await fetch(localApi + "users/change-avatar", {
+        method: "POST",
+        body: formData,
+      })
         .then((res) => res.json())
         .then((data) => {
           return data;

@@ -1,6 +1,5 @@
 import { useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { Button, Paper, Popover, Typography } from "@mui/material";
 import PersonIcon from "@mui/icons-material/Person";
 import SchoolIcon from "@mui/icons-material/School";
@@ -49,10 +48,10 @@ function RightNavHeader() {
             className={styles.app_bar_header_auth_avatar}
             onClick={handlePopoverOpen}
           >
-            <Image
+            <img
               src={userInfor?.avatar ? userInfor.avatar : "/avatar.jpg"}
               alt=""
-            ></Image>
+            ></img>
           </Typography>
           <Popover
             id={id}

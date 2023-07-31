@@ -11,7 +11,12 @@ function Footer() {
           <div className={`${styles.footer_contact} ${styles.grid_4}`}>
             <div className={styles.item_contact}>
               <div className={styles.logo}>
-                <Image alt="logo" src="/images/logo.svg" />
+                <Image
+                  alt="logo"
+                  src="/images/logo.svg"
+                  width={200}
+                  height={42}
+                />
               </div>
             </div>
             <div className={styles.item_contact}>
@@ -66,23 +71,53 @@ function Footer() {
 
             <div className={styles.icon_contact}>
               <Link href="/">
-                <Image alt="" src="/images/footer/facebook.svg" />
+                <Image
+                  alt=""
+                  src="/images/footer/facebook.svg"
+                  width={33}
+                  height={30}
+                />
               </Link>
               <Link href="/">
-                <Image alt="" src="/images/footer/youtube.svg" />
+                <Image
+                  alt=""
+                  src="/images/footer/youtube.svg"
+                  width={33}
+                  height={30}
+                />
               </Link>
               <Link href="/">
-                <Image alt="" src="/images/footer/twitter.svg" />
+                <Image
+                  alt=""
+                  src="/images/footer/twitter.svg"
+                  width={33}
+                  height={30}
+                />
               </Link>
               <Link href="/">
-                <Image alt="" src="/images/footer/pinterest.svg" />
+                <Image
+                  alt=""
+                  src="/images/footer/pinterest.svg"
+                  width={33}
+                  height={30}
+                />
               </Link>
               <Link href="/">
-                <Image alt="" src="/images/footer/tiktok.png" />
+                <Image
+                  alt=""
+                  src="/images/footer/tiktok.png"
+                  width={33}
+                  height={30}
+                />
               </Link>
             </div>
             <Link href="/">
-              <Image alt="" src="/images/footer/dmca-badge.png" />
+              <Image
+                alt=""
+                src="/images/footer/dmca-badge.png"
+                width={150}
+                height={30}
+              />
             </Link>
           </div>
         </div>

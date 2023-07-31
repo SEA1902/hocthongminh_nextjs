@@ -72,6 +72,8 @@ function Navbar(props: Props) {
                       <Image
                         alt="logo"
                         src="/images/logo.svg"
+                        width={200}
+                        height={42}
                         className={styles.image_logo}
                       ></Image>
                     </Link>
