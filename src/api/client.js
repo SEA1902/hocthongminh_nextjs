@@ -1,5 +1,5 @@
-export const localApi = "https://koolsoft-hocthongminh.onrender.com/";
-// export const localApi = "http://localhost:3001/";
+// export const localApi = "https://koolsoft-hocthongminh.onrender.com/";
+export const localApi = "http://localhost:3001/";
 
 export async function client(endpoint, { body, ...customConfig } = {}) {
   const headers = {

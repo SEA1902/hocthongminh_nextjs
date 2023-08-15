@@ -23,6 +23,13 @@ body {
   font-size: 1rem;
   line-height: 1.5;
   background-color: #fff;
+  .title-h1 {
+    font-size: 28px;
+  }
+  button {
+    line-height: 1.7 !important;
+    transition: 0.5s !important;
+  }
 }
 
 html {

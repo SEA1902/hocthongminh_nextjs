@@ -1,6 +1,5 @@
 import { useRouter } from "next/router";
 import { GetServerSideProps, InferGetServerSidePropsType } from "next";
-import DOMPurify from "dompurify";
 import { Container, Grid, Link, Pagination } from "@mui/material";
 import { getKnowledgesList } from "@/app/features/knowledges/knowledgesApi";
 import { AppDispatch, wrapper } from "@/app/store";

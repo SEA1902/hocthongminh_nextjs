@@ -51,8 +51,13 @@ export const usersSlice = createSlice({
         state.registerStatus = "loading";
       })
       .addCase(fetchRegister.fulfilled, (state, action) => {
-        state.loginStatus = "succedded";
-        state.registerStatus = "succeeded";
+        state = {
+          loginStatus: "succeeded",
+          registerStatus: "succeeded",
+          userInfor: action.payload,
+        };
+        setCookie("token", action.payload.token, 60 * 60 * 24);
+        return state;
       })
       .addCase(fetchRegister.rejected, (state, action) => {
         state.registerStatus = "failed";

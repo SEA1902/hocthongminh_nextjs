@@ -8,12 +8,21 @@ import {
 } from "@reduxjs/toolkit";
 import usersReducer from "./features/users/usersSlice";
 import knowledgesReducer from "./features/knowledges/knowledgesSlice";
+import gradeReducer from "./features/grades/gradeSlice";
+import coursesReducer from "./features/courses/coursesSlice";
+import topicsReducer from "./features/topics/topicsSlice";
+import gamesReducer from "./features/games/gamesSlice";
+
 
 const makeStore: MakeStore<Store> = () => {
   const store = configureStore({
     reducer: {
       users: usersReducer,
       knowledges: knowledgesReducer,
+      grade: gradeReducer,
+      courses: coursesReducer,
+      topics: topicsReducer,
+      games: gamesReducer
     },
   });
   return store;

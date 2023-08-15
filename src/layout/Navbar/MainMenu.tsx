@@ -20,16 +20,40 @@ function MainMenu({ display }: Props) {
           <ExpandMore />
         </div>
         <div className={styles.dropdown_content}>
-          <Link href="/" className={styles.dropdown_item}>
+          <Link
+            href={{
+              pathname: "/[slug]",
+              query: { slug: "lop-6" },
+            }}
+            className={styles.dropdown_item}
+          >
             <div className={styles.dropdown_title}>Lớp 6</div>
           </Link>
-          <Link href="/" className={styles.dropdown_item}>
+          <Link
+            href={{
+              pathname: "/[slug]",
+              query: { slug: "lop-7" },
+            }}
+            className={styles.dropdown_item}
+          >
             <div className={styles.dropdown_title}>Lớp 7</div>
           </Link>
-          <Link href="/" className={styles.dropdown_item}>
+          <Link
+            href={{
+              pathname: "/[slug]",
+              query: { slug: "lop-8" },
+            }}
+            className={styles.dropdown_item}
+          >
             <div className={styles.dropdown_title}>Lớp 8</div>
           </Link>
-          <Link href="/" className={styles.dropdown_item}>
+          <Link
+            href={{
+              pathname: "/[slug]",
+              query: { slug: "lop-9" },
+            }}
+            className={styles.dropdown_item}
+          >
             <div className={styles.dropdown_title}>Lớp 9</div>
           </Link>
         </div>
@@ -41,13 +65,31 @@ function MainMenu({ display }: Props) {
           <ExpandMore />
         </div>
         <div className={styles.dropdown_content}>
-          <Link href="/" className={styles.dropdown_item}>
+          <Link
+            href={{
+              pathname: "/[slug]",
+              query: { slug: "lop-10" },
+            }}
+            className={styles.dropdown_item}
+          >
             <div className={styles.dropdown_title}>Lớp 10</div>
           </Link>
-          <Link href="/" className={styles.dropdown_item}>
+          <Link
+            href={{
+              pathname: "/[slug]",
+              query: { slug: "lop-11" },
+            }}
+            className={styles.dropdown_item}
+          >
             <div className={styles.dropdown_title}>Lớp 11</div>
           </Link>
-          <Link href="/" className={styles.dropdown_item}>
+          <Link
+            href={{
+              pathname: "/[slug]",
+              query: { slug: "lop-12" },
+            }}
+            className={styles.dropdown_item}
+          >
             <div className={styles.dropdown_title}>Lớp 12</div>
           </Link>
         </div>

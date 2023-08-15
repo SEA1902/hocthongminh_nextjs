@@ -1,54 +1,52 @@
 .post_item {
+  overflow: hidden;
+  .post_thumb {
+    transition: transform 0.2s linear;
+    position: relative;
+    padding-top: 52.5%;
     overflow: hidden;
-    .post_thumb {
-      transition: transform 0.2s linear;
-      .wp_post_thumb {
-        position: relative;
-        padding-top: 52.5%;
-        overflow: hidden;
 
-        img {
-          vertical-align: middle;
-          position: absolute;
-          max-width: 100%;
-          height: auto;
-          top: 50%;
-          transform: translateY(-50%);
-          object-fit: fill;
-          object-position: center center;
-        }
-      }
+    img {
+      vertical-align: middle;
+      position: absolute;
+      max-width: 100%;
+      height: auto;
+      top: 50%;
+      transform: translateY(-50%);
+      object-fit: fill;
+      object-position: center center;
     }
-    .post_title {
-      overflow: hidden !important;
+  }
+  .post_title {
+    overflow: hidden !important;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+
+    @media (max-width: 1444px) {
+      font-size: 18px;
+    }
+  }
+  .post_excerpt {
+    p {
+      height: 148px;
+      overflow: hidden;
       text-overflow: ellipsis;
       display: -webkit-box;
       -webkit-box-orient: vertical;
-      -webkit-line-clamp: 2;
-
+      -webkit-line-clamp: 6;
+      text-align: justify;
       @media (max-width: 1444px) {
-        font-size: 18px;
-      }
-    }
-    .post_excerpt {
-      p {
-        height: 148px;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        display: -webkit-box;
-        -webkit-box-orient: vertical;
-        -webkit-line-clamp: 6;
-        text-align: justify;
-        @media (max-width: 1444px) {
-          height: 100px;
-          font-size: 13px;
-        }
-      }
-    }
-
-    &:hover {
-      .post_thumb {
-        transform: scale(1.1);
+        height: 100px;
+        font-size: 13px;
       }
     }
   }
+
+  &:hover {
+    .post_thumb {
+      transform: scale(1.1);
+    }
+  }
+}

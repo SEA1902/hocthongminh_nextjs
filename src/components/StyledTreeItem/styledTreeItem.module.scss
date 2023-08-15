@@ -1,0 +1,31 @@
+.tree_box_item {
+  font-size: inherit;
+  padding: 8px 0;
+}
+
+.tree_box_item_content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  color: #333;
+  font-size: inherit;
+  .tree_box_item_title {
+    font-size: 16px !important;
+    font-weight: 700 !important;
+  }
+  .tree_box_item_desc {
+    font-size: 12px;
+    font-weight: 500;
+  }
+  &:hover {
+    .tree_box_item_title {
+      color: var(--primaryColor);
+    }
+  }
+}
+.tree_box_item_progress {
+  width: 120px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 600;
+}

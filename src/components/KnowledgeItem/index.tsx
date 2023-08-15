@@ -24,9 +24,7 @@ const KnowledgeItem = ({ knowledge }: KnowledgeProps) => {
       >
         <div className={styles.post_item}>
           <div className={styles.post_thumb}>
-            <div className={styles.wp_post_thumb}>
-              <img src={knowledge.image} alt="" />
-            </div>
+            <img src={knowledge.image} alt="" />
           </div>
           <h2 className={styles.post_title}>{knowledge.title}</h2>
           <div className={styles.post_meta}></div>
