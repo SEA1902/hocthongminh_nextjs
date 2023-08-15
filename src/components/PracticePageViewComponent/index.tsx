@@ -80,8 +80,8 @@ const PracticePageViewComponent = ({
   return (
     <div className={styles.practice_page_view_component}>
       <div className={styles.levels_practice}>
-        {percentQuestion.map((percentItem) => (
-          <div className={styles.levels_practice_item}>
+        {percentQuestion.map((percentItem, index) => (
+          <div className={styles.levels_practice_item} key={index}>
             <span className={styles.levels_practice_item_name}>
               {percentItem.name}
             </span>

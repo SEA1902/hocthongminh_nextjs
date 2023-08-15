@@ -35,8 +35,8 @@ const HistoryStudy = ({ topic }: { topic: Topic }) => {
       </div>
       <div className={styles.practice_question_box_container}>
         <div className={styles.practice_question_box_list}>
-          {userTopicHistory?.history.map((history: any) => (
-            <div className={styles.practice_question_box_list_item}>
+          {userTopicHistory?.history.map((history: any, index: number) => (
+            <div className={styles.practice_question_box_list_item} key={index}>
               <div style={{ paddingBottom: "unset", maxWidth: " 400px" }}>
                 {topic.topicName}
               </div>

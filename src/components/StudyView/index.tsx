@@ -304,9 +304,12 @@ const StudyView = ({
                       .slice(7 * (row - 1), row * 7)
                       .map((question, indexQuestion) =>
                         results[indexQuestion] == undefined ? (
-                          <Button>{indexQuestion + 1}</Button>
+                          <Button key={indexQuestion}>
+                            {indexQuestion + 1}
+                          </Button>
                         ) : results[indexQuestion] == question.answer ? (
                           <Button
+                            key={indexQuestion}
                             sx={{
                               background: "#4caf50!important",
                               color: "#fff!important",
@@ -316,6 +319,7 @@ const StudyView = ({
                           </Button>
                         ) : (
                           <Button
+                            key={indexQuestion}
                             sx={{
                               background: "#ff5252!important",
                               color: "#fff!important",
