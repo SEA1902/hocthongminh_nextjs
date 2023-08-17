@@ -5,6 +5,8 @@ import DefaultLayout from "@/layout/DefaultLayout";
 import { wrapper } from "@/app/store";
 import "@/styles/globals.css";
 import { MathJaxContext } from "better-react-mathjax";
+import ErrorBoundary from "@/components/ErrorBoundary";
+// import { ErrorBoundary } from "react-error-boundary";
 
 const theme = createTheme({
   palette: {
@@ -19,7 +21,9 @@ const App = ({ Component, pageProps }: AppProps) => {
     <ThemeProvider theme={theme}>
       <DefaultLayout>
         <MathJaxContext>
-          <Component {...pageProps} />
+          <ErrorBoundary>
+            <Component {...pageProps} />
+          </ErrorBoundary>
         </MathJaxContext>
       </DefaultLayout>
     </ThemeProvider>

@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import { GetServerSideProps } from "next";
 import TreeView from "@mui/lab/TreeView";
-import { Button, Container, Grid, Tab, Tabs } from "@mui/material";
+import { Button, Container, Grid } from "@mui/material";
 import {
   KeyboardDoubleArrowDown,
   KeyboardDoubleArrowRight,
@@ -18,15 +17,21 @@ import {
 import StyledTreeItem from "@/components/StyledTreeItem";
 import { getCourseAndTopicList } from "@/app/features/courses/coursesApi";
 import { useAppDispatch, useAppSelector } from "@/app/hooks";
-import { AppDispatch, wrapper } from "@/app/store";
-import { Course, Topic } from "@/types";
+import { Topic, gradeList } from "@/types";
 import styles from "./course.module.scss";
+import { GetServerSideProps } from "next";
+import Error from "next/error";
 
 const SubjectPage = () => {
   const router = useRouter();
   const { slug, courseSlug } = router.query;
 
   const dispatch = useAppDispatch();
+  const hasError = useAppSelector((state) => state.courses.hasError);
+  if (hasError) {
+    return <Error statusCode={500} />;
+  }
+
   const userInfor = useAppSelector((state) => state.users.userInfor);
   const courseInfor = useAppSelector((state) => state.courses.course);
   const topicList = useAppSelector((state) => state.courses.topicList);
@@ -251,6 +256,15 @@ const SubjectPage = () => {
       </div>
     </div>
   );
+};
+export const getServerSideProps: GetServerSideProps = async ({ params }) => {
+  const slug = params?.slug;
+
+  if (typeof slug === "string" && !gradeList.includes(slug)) {
+    return { notFound: true };
+  }
+
+  return { props: {} };
 };
 
 export default SubjectPage;

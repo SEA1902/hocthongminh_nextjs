@@ -40,7 +40,7 @@ const Knowledge = ({
               <h1 className={styles.cat_title}>Chia sẻ kiến thức</h1>
               <div className={styles.cat_posts_list}>
                 <Grid container spacing={3}>
-                  {knowledges?.knowledgesList?.map(
+                  {knowledges.knowledgesList?.map(
                     (knowledge: Knowledge, index: number) => (
                       <KnowledgeItem knowledge={knowledge} key={index} />
                     )
@@ -74,7 +74,8 @@ export const getServerSideProps: GetServerSideProps =
     } else {
       await dispatch(getKnowledgesList(1));
     }
-    const knowledges = store.getState().knowledges.knowledges || null;
+    // const knowledges = store.getState().knowledges.knowledges || null;
+    const knowledges = null;
     return { props: { knowledges } };
   });
 export default Knowledge;

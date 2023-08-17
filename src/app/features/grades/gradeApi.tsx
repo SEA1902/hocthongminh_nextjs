@@ -9,8 +9,8 @@ export const getGradeAndCourseList = createAsyncThunk(
         "grades/get-grade-and-course-list/?classNumber=" + classNumber
       );
       return response.data;
-    } catch (err) {
-      console.log("có lỗi getGradeAndCourseList:", err);
+    } catch (error) {
+      console.log("có lỗi getGradeAndCourseList:", error);
     }
   }
 );

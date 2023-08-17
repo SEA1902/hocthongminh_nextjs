@@ -22,7 +22,7 @@ const KnowledgePage = ({
         <div className={styles.post_content_main}>
           <div className={styles.post_content_main_left}></div>
           <div className={styles.post_content_main_view}>
-            <h1 className={styles.post_title}>{knowledgePage?.title}</h1>
+            <h1 className={styles.post_title}>{knowledgePage.title}</h1>
             <div className={styles.post_content_wrapper}>
               <div
                 className={styles.post_content}

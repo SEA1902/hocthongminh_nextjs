@@ -1,6 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { client } from "@/api/client";
-
 export const getCourseAndTopicList = createAsyncThunk(
   "courses/getCourseAndTopicList",
   async (data: {
@@ -17,6 +16,7 @@ export const getCourseAndTopicList = createAsyncThunk(
       return response.data;
     } catch (err) {
       console.log("có lỗi getCourseAndTopicList:", err);
+      return { hasError: true };
     }
   }
 );

@@ -19,6 +19,15 @@ export interface Knowledge {
   image: string;
   slug: string;
 }
+export const gradeList = [
+  "lop-6",
+  "lop-7",
+  "lop-8",
+  "lop-9",
+  "lop-10",
+  "lop-11",
+  "lop-12",
+];
 
 export interface Grade {
   id: string;

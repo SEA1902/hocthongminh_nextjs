@@ -1,7 +1,7 @@
 import { GetServerSideProps } from "next";
 import { InferGetServerSidePropsType } from "next";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Container } from "@mui/material";
 import {
   getTopicById,

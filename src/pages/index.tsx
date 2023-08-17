@@ -1,6 +1,5 @@
 import CategoryCourse from "@/components/CategoryCourse";
 import CategoryTest from "@/components/CategoryTest";
-import Image from "next/image";
 import HomeBannerRegister from "@/components/HomeBannerRegister";
 import HomeBase from "@/components/HomeBase";
 import HomeFeedback from "@/components/HomeFeedback";

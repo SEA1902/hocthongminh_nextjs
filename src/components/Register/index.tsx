@@ -63,7 +63,15 @@ function Register({ openRegister, setOpenRegister }: RegisterProps) {
   }, [registerStatus, setOpenRegister]);
 
   const onSubmitRegister = async (data: FormRegister) => {
-    await dispatch(fetchRegister(data));
+    const form = {
+      username: data.username,
+      password: data.password,
+      name: data.name,
+      email: data.email,
+      phone: data.phone,
+      classNumber: data.classNumber,
+    };
+    await dispatch(fetchRegister(form));
   };
 
   const handleCloseModal = () => {
