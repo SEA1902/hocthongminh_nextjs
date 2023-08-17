@@ -15,8 +15,8 @@ export const coursesSlice = createSlice({
     builder.addCase(getCourseAndTopicList.fulfilled, (state, action) => {
       return {
         ...state,
-        course: action.payload.course,
-        topicList: action.payload.topicList,
+        course: action.payload?.course || null,
+        topicList: action.payload?.topicList || null,
       };
     });
   },

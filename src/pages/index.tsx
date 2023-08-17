@@ -6,6 +6,10 @@ import HomeFeedback from "@/components/HomeFeedback";
 import HomeUtils from "@/components/HomeUtils";
 import KnowledgeView from "@/components/KnowledgeView";
 import styles from "./home.module.scss";
+import { ErrorBoundary } from "react-error-boundary";
+import ErrorFallback from "@/components/ErrorFallback";
+import { useState } from "react";
+// import ErrorBoundary from "@/components/ErrorBoundary";
 
 const Home = () => {
   return (
@@ -20,7 +24,13 @@ const Home = () => {
         </div>
       </div>
 
-      <CategoryCourse />
+      <ErrorBoundary
+        fallbackRender={ErrorFallback}
+        onReset={() => {}} // increment the retry count on reset
+        // resetKeys={[retryCount]}
+      >
+        <CategoryCourse />
+      </ErrorBoundary>
       <CategoryTest />
       <HomeUtils />
       <HomeBase />

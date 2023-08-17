@@ -21,6 +21,14 @@ class ErrorBoundary extends Component<Props, State> {
   public componentDidCatch(error: Error, errorInfo: ErrorInfo) {
     console.error("Uncaught error:", error, errorInfo);
   }
+  public componentDidMount() {
+    // Check if there is an error during the initial render
+    const { children } = this.props;
+    if (React.Children.count(children) === 1) {
+      this.setState({ hasError: true });
+    }
+  }
+
   public componentDidUpdate(prevProps: Props) {
     // Check if the children prop has changed
     if (prevProps.children !== this.props.children) {

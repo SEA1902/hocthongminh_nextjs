@@ -20,6 +20,7 @@ import { useAppDispatch, useAppSelector } from "@/app/hooks";
 import { Topic, gradeList } from "@/types";
 import styles from "./course.module.scss";
 import { GetServerSideProps } from "next";
+import Error from "next/error";
 
 const SubjectPage = () => {
   const router = useRouter();
@@ -86,6 +87,9 @@ const SubjectPage = () => {
         `${courseSlug ? courseSlug[1] : ""}`,
     },
   ];
+  if (!courseInfor) {
+    return <Error statusCode={404} />;
+  }
   return (
     <div
       id="main"
