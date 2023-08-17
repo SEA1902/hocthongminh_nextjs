@@ -20,18 +20,12 @@ import { useAppDispatch, useAppSelector } from "@/app/hooks";
 import { Topic, gradeList } from "@/types";
 import styles from "./course.module.scss";
 import { GetServerSideProps } from "next";
-import Error from "next/error";
 
 const SubjectPage = () => {
   const router = useRouter();
   const { slug, courseSlug } = router.query;
 
   const dispatch = useAppDispatch();
-  const hasError = useAppSelector((state) => state.courses.hasError);
-  if (hasError) {
-    return <Error statusCode={500} />;
-  }
-
   const userInfor = useAppSelector((state) => state.users.userInfor);
   const courseInfor = useAppSelector((state) => state.courses.course);
   const topicList = useAppSelector((state) => state.courses.topicList);
@@ -42,7 +36,6 @@ const SubjectPage = () => {
   }
   const [typeTopic, setTypeTopic] = useState(0);
   const [maxChapterNumber, setMaxChapterNumber] = useState(0);
-
   useEffect(() => {
     if (userInfor && classNumber && courseSlug) {
       dispatch(
@@ -69,13 +62,6 @@ const SubjectPage = () => {
     }
   }, [topicList]);
 
-  const handleChangeTypeCourse = (
-    event: React.SyntheticEvent,
-    newValue: number
-  ) => {
-    setTypeTopic(newValue);
-  };
-
   const linkBreadcrumbs = [
     {
       name: "Lớp " + classNumber,
@@ -100,7 +86,6 @@ const SubjectPage = () => {
         `${courseSlug ? courseSlug[1] : ""}`,
     },
   ];
-
   return (
     <div
       id="main"

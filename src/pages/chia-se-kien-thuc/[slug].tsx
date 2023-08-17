@@ -47,7 +47,9 @@ export const getServerSideProps: GetServerSideProps =
     if (slug) await dispatch(getKnowledgeBySlug(slug.toString()));
 
     const knowledgePage = store.getState().knowledges.knowledgePage;
-
+    if (!knowledgePage) {
+      return { notFound: true };
+    }
     return { props: { knowledgePage } };
   });
 
