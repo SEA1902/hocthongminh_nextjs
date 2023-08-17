@@ -8,7 +8,7 @@ import KnowledgeView from "@/components/KnowledgeView";
 import styles from "./home.module.scss";
 import { ErrorBoundary } from "react-error-boundary";
 import ErrorFallback from "@/components/ErrorFallback";
-import { useState } from "react";
+import TestError from "@/components/TestError";
 // import ErrorBoundary from "@/components/ErrorBoundary";
 
 const Home = () => {
@@ -23,14 +23,14 @@ const Home = () => {
           />
         </div>
       </div>
-
       <ErrorBoundary
         fallbackRender={ErrorFallback}
         onReset={() => {}} // increment the retry count on reset
         // resetKeys={[retryCount]}
       >
-        <CategoryCourse />
+        <TestError />
       </ErrorBoundary>
+      <CategoryCourse />
       <CategoryTest />
       <HomeUtils />
       <HomeBase />

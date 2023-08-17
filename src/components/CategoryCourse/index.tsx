@@ -2,33 +2,32 @@ import { Container } from "@mui/material";
 import BlockCategoryItem from "../BlockCategoryItem";
 import styles from "./categoryCourse.module.scss";
 
-// const dataCourseTHCS = [
-//   {
-//     itemImage: "/images/categoryCourse/lop-6.png",
-//     itemBody:
-//       "Tổng hợp tài liệu các môn Toán, Văn, Tiếng Anh, Lịch Sử,... đầy đủ và chi tiết nhất theo chương trình học lớp 6 và các đề thi học lỳ 1, học kỳ 2 kèm theo lời giải chi tiết.",
-//     colorButton: "rgb(0, 157, 157)",
-//   },
-//   {
-//     itemImage: "/images/categoryCourse/lop-7.png",
-//     itemBody:
-//       "Làm bài tập trắc nghiệm các môn học bám sát với chương trình giảng dạy trên lớp của thầy cô để các em chủ động nắm rõ toàn bộ nội dung kiến thức trên lớp",
-//     colorButton: "rgb(85, 187, 126)",
-//   },
-//   {
-//     itemImage: "/images/categoryCourse/lop-8.png",
-//     itemBody:
-//       "Làm bài tập các môn Toán, Hóa, Sinh, Địa, Sử,... theo chương trình lớp 8 mới nhất dưới hình thức trắc nghiệm. Các em có thể luyện đề kiểm tra, đề thi học kỳ 1, học kỳ 2 ngay tại trang web Học Thông Minh",
-//     colorButton: "rgb(245, 183, 61)",
-//   },
-//   {
-//     itemImage: "/images/categoryCourse/lop-9.png",
-//     itemBody:
-//       "Luyện tập các câu hỏi trắc nghiệm về những môn học như Toán, Văn, Anh, Sinh,... theo chương trình giảng dạy trên tường và forrm đề thi giữa kỳ, học kỳ với đáp án chi tiết.",
-//     colorButton: "rgb(245, 133, 81)",
-//   },
-// ];
-const dataCourseTHCS = null;
+const dataCourseTHCS = [
+  {
+    itemImage: "/images/categoryCourse/lop-6.png",
+    itemBody:
+      "Tổng hợp tài liệu các môn Toán, Văn, Tiếng Anh, Lịch Sử,... đầy đủ và chi tiết nhất theo chương trình học lớp 6 và các đề thi học lỳ 1, học kỳ 2 kèm theo lời giải chi tiết.",
+    colorButton: "rgb(0, 157, 157)",
+  },
+  {
+    itemImage: "/images/categoryCourse/lop-7.png",
+    itemBody:
+      "Làm bài tập trắc nghiệm các môn học bám sát với chương trình giảng dạy trên lớp của thầy cô để các em chủ động nắm rõ toàn bộ nội dung kiến thức trên lớp",
+    colorButton: "rgb(85, 187, 126)",
+  },
+  {
+    itemImage: "/images/categoryCourse/lop-8.png",
+    itemBody:
+      "Làm bài tập các môn Toán, Hóa, Sinh, Địa, Sử,... theo chương trình lớp 8 mới nhất dưới hình thức trắc nghiệm. Các em có thể luyện đề kiểm tra, đề thi học kỳ 1, học kỳ 2 ngay tại trang web Học Thông Minh",
+    colorButton: "rgb(245, 183, 61)",
+  },
+  {
+    itemImage: "/images/categoryCourse/lop-9.png",
+    itemBody:
+      "Luyện tập các câu hỏi trắc nghiệm về những môn học như Toán, Văn, Anh, Sinh,... theo chương trình giảng dạy trên tường và forrm đề thi giữa kỳ, học kỳ với đáp án chi tiết.",
+    colorButton: "rgb(245, 133, 81)",
+  },
+];
 const dataCourseTHPT = [
   {
     itemImage: "/images/categoryCourse/lop-10.png",
