@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import { GetServerSideProps, InferGetServerSidePropsType } from "next";
-import { Container, Grid, Link, Pagination } from "@mui/material";
+import { Container, Grid, Pagination } from "@mui/material";
 import { getKnowledgesList } from "@/app/features/knowledges/knowledgesApi";
 import { AppDispatch, wrapper } from "@/app/store";
 import CustomBreadcrumbs from "@/components/CustomBreadcrumbs";
@@ -74,8 +74,7 @@ export const getServerSideProps: GetServerSideProps =
     } else {
       await dispatch(getKnowledgesList(1));
     }
-    // const knowledges = store.getState().knowledges.knowledges || null;
-    const knowledges = null;
+    const knowledges = store.getState().knowledges.knowledges || null;
     return { props: { knowledges } };
   });
 export default Knowledge;
