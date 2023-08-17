@@ -12,7 +12,6 @@ import gradeReducer from "./features/grades/gradeSlice";
 import coursesReducer from "./features/courses/coursesSlice";
 import topicsReducer from "./features/topics/topicsSlice";
 import gamesReducer from "./features/games/gamesSlice";
-import errorsReducer from "./features/errors/errorsSlice";
 
 const makeStore: MakeStore<Store> = () => {
   const store = configureStore({
@@ -23,7 +22,6 @@ const makeStore: MakeStore<Store> = () => {
       courses: coursesReducer,
       topics: topicsReducer,
       games: gamesReducer,
-      errors: errorsReducer,
     },
   });
   return store;
